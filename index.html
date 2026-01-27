@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BrightMinds - Problem Solving Track</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -29,7 +29,9 @@
             font-family: 'Segoe UI', 'Tajawal', sans-serif;
         }
 
+        /* إصلاح مشكلة الأسكرول */
         html {
+            height: 100%;
             -webkit-text-size-adjust: 100%;
             -ms-text-size-adjust: 100%;
         }
@@ -37,11 +39,27 @@
         body {
             background: var(--light);
             color: var(--dark);
-            transition: var(--transition);
             min-height: 100vh;
+            width: 100%;
             overflow-x: hidden;
+            overflow-y: auto; /* السماح بالأسكرول */
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            display: block;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--secondary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 4px;
         }
 
         /* Container for all content */
@@ -49,6 +67,8 @@
             width: 100%;
             padding: 0 20px;
             margin: 0 auto;
+            display: block;
+            position: relative;
         }
 
         @media (min-width: 576px) {
@@ -95,20 +115,6 @@
             color: rgba(240, 246, 252, 0.7) !important;
         }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--secondary);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--accent);
-            border-radius: 3px;
-        }
-
         /* Floating Background - Simplified for mobile */
         .floating-bg {
             position: fixed;
@@ -119,6 +125,7 @@
             z-index: -1;
             overflow: hidden;
             opacity: 0.3;
+            pointer-events: none;
         }
 
         .floating-element {
@@ -153,6 +160,7 @@
             clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
             margin-bottom: 20px;
             width: 100%;
+            display: block;
         }
 
         .main-header::before {
@@ -208,6 +216,7 @@
             margin-top: 30px;
             width: 100%;
             padding: 0 10px;
+            margin-bottom: 90px;
         }
 
         .member-card {
@@ -374,7 +383,7 @@
 
         .collapse-content.show {
             padding: 25px 20px;
-            max-height: 10000px;
+            max-height: 5000px;
         }
 
         /* Week Content Section */
@@ -559,6 +568,7 @@
             clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
             position: relative;
             width: 100%;
+            display: block;
         }
 
         .footer-title {
@@ -680,10 +690,26 @@
             display: none;
         }
 
-        /* Enhanced mobile specific styles */
+        /* تحسينات للأداء */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* إصلاحات للمس على الجوال */
+        button, 
+        .video-btn,
+        .member-card,
+        .topic-card,
+        .collapse-header {
+            -webkit-tap-highlight-color: rgba(15, 206, 124, 0.2);
+        }
+
+        /* تحسينات استجابة الشاشات الصغيرة */
         @media (max-width: 767px) {
             body {
                 font-size: 16px;
+                overflow-y: auto;
             }
             
             .container {
@@ -791,52 +817,38 @@
             }
         }
 
-        /* Prevent text overflow on very small screens */
-        @media (max-width: 320px) {
-            .team-name {
-                font-size: 1.6rem;
-            }
-            
-            .team-track {
-                font-size: 0.9rem;
-            }
-            
-            .member-card {
-                padding: 12px;
-                font-size: 0.9rem;
-            }
-            
-            .topic-header {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                gap: 12px;
-            }
-            
-            .topic-title {
-                text-align: center;
-            }
+        /* تحسينات التخطيط */
+        .watch {
+            background: linear-gradient(135deg, #0fce7c, #0db46c);
+            color: white;
         }
 
-        /* Touch-friendly enhancements */
-        button, 
-        .video-btn,
-        .member-card,
-        .topic-card,
-        .collapse-header {
-            -webkit-tap-highlight-color: transparent;
-            touch-action: manipulation;
+        .mark {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
         }
 
-        /* Improve readability on small screens */
-        p, h1, h2, h3, h4, h5, h6 {
-            line-height: 1.5;
+        .mark.watched {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
         }
 
-        /* Ensure images/icons don't overflow */
-        img, svg, i {
-            max-width: 100%;
-            height: auto;
+        /* تحسينات الدوائر في SVG */
+        .circle-bg {
+            fill: none;
+            stroke: #16213e;
+            stroke-width: 10;
+        }
+
+        .circle-progress {
+            fill: none;
+            stroke: url(#progress-gradient);
+            stroke-width: 10;
+            stroke-linecap: round;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+            stroke-dasharray: 628;
+            stroke-dashoffset: 628;
         }
     </style>
 </head>
@@ -1211,10 +1223,10 @@
         function showAchievement(title, message) {
             badgeTitle.textContent = title;
             badgeMessage.textContent = message;
-            achievementBadge.classList.add('show');
+            achievementBadge.style.transform = 'translate(-50%, -50%) scale(1)';
             
             setTimeout(() => {
-                achievementBadge.classList.remove('show');
+                achievementBadge.style.transform = 'translate(-50%, -50%) scale(0)';
             }, 3000);
         }
 
@@ -1390,22 +1402,10 @@
             });
         });
 
-        // Handle orientation change
-        window.addEventListener('orientationchange', function() {
-            setTimeout(() => {
-                window.scrollTo(0, 0);
-            }, 100);
-        });
-
-        // Prevent zoom on double tap
-        let lastTouchEnd = 0;
-        document.addEventListener('touchend', function(event) {
-            const now = (new Date()).getTime();
-            if (now - lastTouchEnd <= 300) {
-                event.preventDefault();
-            }
-            lastTouchEnd = now;
-        }, false);
+        // تحسين الأسكرول على الجوال
+        document.addEventListener('touchmove', function(e) {
+            // السماح بالأسكرول الطبيعي
+        }, { passive: true });
     </script>
 </body>
 </html>
