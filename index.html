@@ -690,26 +690,12 @@
             display: none;
         }
 
-        /* تحسينات للأداء */
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* إصلاحات للمس على الجوال */
-        button, 
-        .video-btn,
-        .member-card,
-        .topic-card,
-        .collapse-header {
-            -webkit-tap-highlight-color: rgba(15, 206, 124, 0.2);
-        }
+    
 
         /* تحسينات استجابة الشاشات الصغيرة */
         @media (max-width: 767px) {
             body {
                 font-size: 16px;
-                overflow-y: auto;
             }
             
             .container {
