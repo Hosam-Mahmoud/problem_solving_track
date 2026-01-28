@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BrightMinds - Problem Solving Track</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -14,7 +14,12 @@
             --accent-dark: #0db46c;
             --light: #0d1117;
             --dark: #f0f6fc;
+            --gradient-1: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            --gradient-2: linear-gradient(135deg, #0fce7c 0%, #0db46c 100%);
+            --gradient-3: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            --gradient-4: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
             --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         * {
@@ -24,14 +29,11 @@
             font-family: 'Segoe UI', 'Tajawal', sans-serif;
         }
 
+        /* إصلاح مشكلة الأسكرول */
         html {
             height: 100%;
             -webkit-text-size-adjust: 100%;
             -ms-text-size-adjust: 100%;
-            scroll-behavior: smooth;
-            overflow-y: scroll;
-            -webkit-overflow-scrolling: touch;
-            touch-action: manipulation;
         }
 
         body {
@@ -40,12 +42,7 @@
             min-height: 100vh;
             width: 100%;
             overflow-x: hidden;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-            touch-action: manipulation;
-            margin: 0;
-            padding: 0;
-            position: relative;
+            overflow-y: auto; /* السماح بالأسكرول */
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             display: block;
@@ -118,22 +115,74 @@
             color: rgba(240, 246, 252, 0.7) !important;
         }
 
+        /* Floating Background - Simplified for mobile */
+        .floating-bg {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            overflow: hidden;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .floating-element {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+            opacity: 0.1;
+        }
+
+        .floating-element:nth-child(1) {
+            width: 200px;
+            height: 200px;
+            top: -100px;
+            right: -100px;
+        }
+
+        .floating-element:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            bottom: -75px;
+            left: -75px;
+            background: radial-gradient(circle, #6a11cb 0%, transparent 70%);
+        }
+
         /* Header */
         .main-header {
-            background: var(--primary);
+            background: var(--gradient-1);
             color: white;
             padding: 40px 0 30px;
             position: relative;
+            overflow: hidden;
+            clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
             margin-bottom: 20px;
             width: 100%;
             display: block;
+        }
+
+        .main-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(15, 206, 124, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(106, 17, 203, 0.1) 0%, transparent 50%);
         }
 
         /* Team name - Responsive */
         .team-name {
             font-size: clamp(2rem, 8vw, 4.5rem);
             font-weight: 900;
-            color: var(--accent);
+            background: linear-gradient(45deg, #0fce7c, #6a11cb, #2575fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
             margin-bottom: 10px;
             line-height: 1.2;
             padding: 0 10px;
@@ -152,6 +201,7 @@
             padding: 8px 20px;
             border: 2px solid var(--accent);
             border-radius: 50px;
+            background: rgba(15, 206, 124, 0.1);
             line-height: 1.4;
             max-width: 90%;
             word-break: break-word;
@@ -170,11 +220,14 @@
         }
 
         .member-card {
-            background: var(--secondary);
+            background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            backdrop-filter: blur(10px);
             padding: 20px;
             border-radius: 16px;
             border: 2px solid transparent;
+            transition: var(--transition);
             position: relative;
+            overflow: hidden;
             font-weight: 700;
             font-size: clamp(0.9rem, 3.5vw, 1.3rem);
             color: white;
@@ -195,14 +248,16 @@
 
         /* Progress Section - Mobile optimized */
         .progress-container {
-            background: var(--secondary);
+            background: rgba(255, 255, 255, 0.03);
             border-radius: 20px;
             padding: 25px 20px;
             margin: 30px auto;
             width: 100%;
+            backdrop-filter: blur(10px);
             border: 2px solid rgba(255, 255, 255, 0.1);
             box-shadow: var(--shadow);
             position: relative;
+            overflow: hidden;
             max-width: 500px;
         }
 
@@ -227,18 +282,23 @@
             transform: translate(-50%, -50%);
             font-size: clamp(2rem, 6vw, 3.2rem);
             font-weight: 900;
-            color: var(--accent);
+            background: linear-gradient(45deg, #0fce7c, #6a11cb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 3px 10px rgba(0,0,0,0.3);
         }
 
         /* Motivation Section - Mobile optimized */
         .motivation-container {
-            background: var(--secondary);
+            background: rgba(255, 255, 255, 0.03);
             border-radius: 20px;
             padding: 25px 20px;
             margin: 30px auto;
             width: 100%;
+            backdrop-filter: blur(10px);
             border: 2px solid rgba(255, 255, 255, 0.1);
             position: relative;
+            overflow: hidden;
             box-shadow: var(--shadow);
             min-height: auto;
             display: flex;
@@ -267,24 +327,28 @@
 
         /* Main Collapse - Mobile optimized */
         .main-collapse {
-            background: var(--secondary);
+            background: rgba(255, 255, 255, 0.03);
             border-radius: 20px;
             margin: 30px auto;
             width: 100%;
+            overflow: hidden;
             box-shadow: var(--shadow);
             border: 2px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
             max-width: 1200px;
         }
 
         .collapse-header {
-            background: var(--primary);
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
             color: white;
             padding: 25px 20px;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            transition: var(--transition);
             position: relative;
+            overflow: hidden;
             min-height: 70px;
         }
 
@@ -314,12 +378,12 @@
             padding: 0;
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease-out;
+            transition: max-height 0.8s cubic-bezier(0.77, 0, 0.175, 1);
         }
 
         .collapse-content.show {
             padding: 25px 20px;
-            max-height: 10000px; /* قيمة كبيرة للسماح بالتوسع الكامل */
+            max-height: 5000px;
         }
 
         /* Week Content Section */
@@ -353,12 +417,14 @@
         }
 
         .topic-card {
-            background: var(--primary);
+            background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
             border-radius: 18px;
             padding: 25px 20px;
+            transition: var(--transition);
             border: 2px solid rgba(255, 255, 255, 0.08);
             cursor: pointer;
             position: relative;
+            overflow: hidden;
             width: 100%;
         }
 
@@ -370,7 +436,7 @@
         }
 
         .topic-number {
-            background: var(--accent);
+            background: linear-gradient(135deg, #0fce7c, #6a11cb);
             color: white;
             width: 60px;
             height: 60px;
@@ -380,6 +446,7 @@
             justify-content: center;
             font-weight: 900;
             font-size: clamp(1.3rem, 4vw, 2rem);
+            box-shadow: 0 6px 15px rgba(15, 206, 124, 0.3);
             flex-shrink: 0;
         }
 
@@ -409,6 +476,7 @@
             padding: 10px 25px;
             border-radius: 50px;
             background: rgba(255,255,255,0.05);
+            transition: var(--transition);
             width: 100%;
             max-width: 280px;
             text-align: center;
@@ -441,13 +509,15 @@
         }
 
         .video-card {
-            background: var(--primary);
+            background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
             border-radius: 16px;
             padding: 20px 15px;
             text-align: center;
+            transition: var(--transition);
             border: 2px solid rgba(255, 255, 255, 0.08);
             cursor: pointer;
             position: relative;
+            overflow: hidden;
             width: 100%;
             min-height: 130px;
             display: flex;
@@ -459,7 +529,9 @@
             font-size: clamp(1.8rem, 5vw, 3rem);
             font-weight: 900;
             margin-bottom: 10px;
-            color: var(--accent);
+            background: linear-gradient(45deg, #0fce7c, #6a11cb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             line-height: 1;
         }
 
@@ -476,6 +548,7 @@
             border: none;
             font-weight: 700;
             cursor: pointer;
+            transition: var(--transition);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -487,11 +560,12 @@
 
         /* Footer - Mobile optimized */
         .footer {
-            background: var(--primary);
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
             color: white;
             text-align: center;
             padding: 50px 0 30px;
             margin-top: 50px;
+            clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
             position: relative;
             width: 100%;
             display: block;
@@ -500,7 +574,9 @@
         .footer-title {
             font-size: clamp(1.5rem, 5vw, 2.5rem);
             margin-bottom: 20px;
-            color: var(--accent);
+            background: linear-gradient(45deg, #0fce7c, #6a11cb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             font-weight: 900;
             padding: 0 10px;
         }
@@ -514,6 +590,8 @@
             display: inline-block;
             padding: 8px 20px;
             border-radius: 50px;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
             margin-bottom: 15px;
             max-width: 90%;
             word-break: break-word;
@@ -524,23 +602,24 @@
             font-size: clamp(0.9rem, 3vw, 1.1rem);
         }
 
-        /* Achievement Badge - Simplified */
+        /* Achievement Badge - Mobile optimized */
         .achievement-badge {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) scale(0);
-            background: var(--accent);
+            background: linear-gradient(135deg, #0fce7c, #6a11cb);
             color: white;
             padding: 25px 20px;
             border-radius: 20px;
             text-align: center;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
             z-index: 10000;
+            transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             width: 90%;
             max-width: 350px;
+            backdrop-filter: blur(20px);
             border: 2px solid rgba(255, 255, 255, 0.2);
-            transition: transform 0.3s ease;
         }
 
         .badge-icon {
@@ -557,173 +636,68 @@
             font-size: clamp(0.9rem, 3.5vw, 1.1rem);
         }
 
-        .heavy-element {
-            transform: translate3d(0, 0, 0);
-            will-change: transform;
-        }
-
-        .fixed-element {
+        /* Loading Overlay - Mobile optimized */
+        .loading-overlay {
             position: fixed;
-            will-change: transform;
-            backface-visibility: hidden;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+            transition: opacity 0.6s ease;
         }
 
-        @media (max-width: 767px) {
-            body {
-                font-size: 16px;
-            }
-            
-            .container {
-                padding: 0 15px;
-            }
-            
-            .main-header {
-                padding: 30px 0 25px;
-            }
-            
-            .progress-container {
-                padding: 20px 15px;
-                margin: 25px auto;
-            }
-            
-            .motivation-container {
-                padding: 20px 15px;
-                margin: 25px auto;
-            }
-            
-            .main-collapse {
-                margin: 25px auto;
-            }
-            
-            .collapse-content.show {
-                padding: 20px 15px;
-            }
-            
-            .video-btn {
-                padding: 7px 5px;
-                font-size: 0.8rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 12px;
-            }
-            
-            .team-name {
-                font-size: 2.2rem;
-                padding: 0 5px;
-            }
-            
-            .team-track {
-                font-size: 1.1rem;
-                padding: 6px 15px;
-                margin-bottom: 20px;
-            }
-            
-            .member-card {
-                padding: 15px;
-                font-size: 1rem;
-            }
-            
-            .topic-card {
-                padding: 20px 15px;
-            }
-            
-            .topic-number {
-                width: 50px;
-                height: 50px;
-                font-size: 1.5rem;
-            }
-            
-            .section-title {
-                font-size: 1.3rem;
-                margin-bottom: 20px;
-            }
-        }
-
-        @media (max-width: 360px) {
-            .container {
-                padding: 0 10px;
-            }
-            
-            .team-name {
-                font-size: 1.8rem;
-            }
-            
-            .team-track {
-                font-size: 1rem;
-                padding: 5px 12px;
-            }
-            
-            .progress-circle {
-                width: 140px;
-                height: 140px;
-            }
-            
-            .progress-text {
-                font-size: 2.2rem;
-            }
-            
-            .collapse-title {
-                font-size: 1rem;
-            }
-            
-            .topic-title {
-                font-size: 1rem;
-            }
-            
-            .videos-grid {
-                grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-            }
-        }
-
-        @media (max-width: 768px) {
-            body {
-                overscroll-behavior: none;
-            }
-            * {
-                transition: none !important;
-            }
-        }
-
-        /* Layout improvements */
-        .watch {
-            background: var(--accent);
+        .loading-content {
+            text-align: center;
             color: white;
+            padding: 20px;
+            width: 90%;
+            max-width: 300px;
         }
 
-        .mark {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 6px solid rgba(255, 255, 255, 0.1);
+            border-top: 6px solid var(--accent);
+            border-radius: 50%;
+            animation: spin 1.5s linear infinite;
+            margin: 0 auto 20px;
         }
 
-        .mark.watched {
-            background: var(--accent-dark);
-            color: white;
+        .loading-content h3 {
+            font-size: clamp(1.2rem, 4vw, 1.8rem);
+            margin-bottom: 10px;
         }
 
-        /* SVG circles improvements */
-        .circle-bg {
-            fill: none;
-            stroke: #16213e;
-            stroke-width: 10;
+        .loading-content p {
+            font-size: clamp(0.9rem, 3.5vw, 1.1rem);
         }
 
-        .circle-progress {
-            fill: none;
-            stroke: var(--accent);
-            stroke-width: 10;
-            stroke-linecap: round;
-            transform: rotate(-90deg);
-            transform-origin: 50% 50%;
-            stroke-dasharray: 628;
-            stroke-dashoffset: 628;
-            transition: stroke-dashoffset 0.3s ease;
-        }
+
+   
     </style>
 </head>
 <body>
+    <!-- Floating Background -->
+    <div class="floating-bg">
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <h3>BrightMinds Team</h3>
+            <p>جاري تحضير تجربة التعلم المميزة...</p>
+        </div>
+    </div>
+
     <!-- Achievement Badge -->
     <div class="achievement-badge" id="achievementBadge">
         <div class="badge-icon">
@@ -732,6 +706,9 @@
         <h3 id="badgeTitle">إنجاز رائع!</h3>
         <p id="badgeMessage">لقد أتممت جزءًا جديدًا من المحتوى</p>
     </div>
+
+    <!-- Celebration -->
+    <div class="celebration" id="celebration"></div>
 
     <!-- Header Section -->
     <header class="main-header">
@@ -767,6 +744,12 @@
         <div class="progress-container">
             <div class="progress-circle">
                 <svg viewBox="0 0 220 220">
+                    <defs>
+                        <linearGradient id="progress-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#0fce7c" />
+                            <stop offset="100%" stop-color="#6a11cb" />
+                        </linearGradient>
+                    </defs>
                     <circle class="circle-bg" cx="110" cy="110" r="100"></circle>
                     <circle class="circle-progress" cx="110" cy="110" r="100" id="progressCircle"></circle>
                 </svg>
@@ -842,9 +825,11 @@
 
     <script>
         // DOM Elements
+        const loadingOverlay = document.getElementById('loadingOverlay');
         const achievementBadge = document.getElementById('achievementBadge');
         const badgeTitle = document.getElementById('badgeTitle');
         const badgeMessage = document.getElementById('badgeMessage');
+        const celebration = document.getElementById('celebration');
         const progressCircle = document.getElementById('progressCircle');
         const progressPercent = document.getElementById('progressPercent');
         const motivationText = document.getElementById('motivationText');
@@ -857,7 +842,7 @@
         const totalItems = 45; // 9 topics + 36 videos
         let completedItems = 0;
 
-        // Video URLs
+        // Video URLs from the provided links
         const videoUrls = [
             "https://youtu.be/haXXcI17WM4",
             "https://youtu.be/FVV4kTy0dJg",
@@ -899,18 +884,18 @@
 
         // Topics data
         const topics = [
-            { id: 1, title: "عقلية الـ Problem Solving - الأساس الذهني قبل البرمجة" },
-            { id: 2, title: "الخطوات المنهجية لحل المسائل البرمجية" },
-            { id: 3, title: "أساسيات لغة C++ للـ Problem Solving" },
-            { id: 4, title: "أنواع البيانات والمتغيرات (Data Types & Variables)" },
-            { id: 5, title: "الشروط والتفرع (Conditional Statements)" },
-            { id: 6, title: "الحلقات التكرارية (Loops)" },
-            { id: 7, title: "المصفوفات والـ Vectors (Arrays & Vectors)" },
-            { id: 8, title: "التعامل مع النصوص (Strings)" },
-            { id: 9, title: "الدوال ووحدات البرمجة (Functions)" }
+            { id: 1, title: "عقلية الـ Problem Solving - الأساس الذهني قبل البرمجة", icon: "fa-brain" },
+            { id: 2, title: "الخطوات المنهجية لحل المسائل البرمجية", icon: "fa-road" },
+            { id: 3, title: "أساسيات لغة C++ للـ Problem Solving", icon: "fa-code" },
+            { id: 4, title: "أنواع البيانات والمتغيرات (Data Types & Variables)", icon: "fa-shapes" },
+            { id: 5, title: "الشروط والتفرع (Conditional Statements)", icon: "fa-code-branch" },
+            { id: 6, title: "الحلقات التكرارية (Loops)", icon: "fa-redo" },
+            { id: 7, title: "المصفوفات والـ Vectors (Arrays & Vectors)", icon: "fa-cubes" },
+            { id: 8, title: "التعامل مع النصوص (Strings)", icon: "fa-font" },
+            { id: 9, title: "الدوال ووحدات البرمجة (Functions)", icon: "fa-function" }
         ];
 
-        // Motivational messages
+        // Improved motivational messages (10 different ones)
         const motivationalMessages = [
             "كل تحدي تواجهه في البرمجة هو فرصة لتطوير مهاراتك. مع فريق BrightMinds، أنت لست وحدك في هذه الرحلة",
             "الإتقان يأتي من التكرار والممارسة. كل خطوة تتقدمها مع BrightMinds تقربك من احتراف حل المشكلات",
@@ -965,7 +950,7 @@
                     </div>
                 `;
                 videosGrid.appendChild(videoCard);
-            });
+            }
         }
 
         // Update progress
@@ -973,11 +958,15 @@
             const progress = Math.round((completedItems / totalItems) * 100);
             progressPercent.textContent = `${progress}%`;
             
-            const circumference = 628;
+            // Update circle progress
+            const circumference = 628; // 2 * π * 100
             const offset = circumference - (progress / 100) * circumference;
             progressCircle.style.strokeDashoffset = offset;
             
+            // Save progress
             saveProgress();
+            
+            // Check for achievements
             checkAchievements();
         }
 
@@ -988,6 +977,7 @@
                 lastUpdated: new Date().toISOString()
             };
             
+            // Save topics status
             topics.forEach(topic => {
                 const card = document.querySelector(`[data-topic-id="${topic.id}"]`);
                 if (card) {
@@ -995,6 +985,7 @@
                 }
             });
             
+            // Save videos status
             for (let i = 1; i <= 36; i++) {
                 const videoCard = document.querySelector(`[data-video-id="${i}"]`);
                 if (videoCard) {
@@ -1002,44 +993,60 @@
                 }
             }
             
-            localStorage.setItem('brightmindsProgress', JSON.stringify(progressData));
+            try {
+                localStorage.setItem('brightmindsProgress', JSON.stringify(progressData));
+            } catch (e) {
+                console.log('Storage not available:', e.message);
+            }
         }
 
         // Load progress from localStorage
         function loadProgress() {
-            const savedProgress = localStorage.getItem('brightmindsProgress');
-            if (savedProgress) {
-                const progressData = JSON.parse(savedProgress);
-                
-                topics.forEach(topic => {
-                    const card = document.querySelector(`[data-topic-id="${topic.id}"]`);
-                    if (card && progressData[`topic${topic.id}`]) {
-                        card.classList.add('completed');
-                        card.querySelector('.status-indicator').innerHTML = 
-                            '<i class="fas fa-check-circle"></i><span>مكتمل - انقر لإلغاء</span>';
-                        completedItems++;
+            try {
+                const savedProgress = localStorage.getItem('brightmindsProgress');
+                if (savedProgress) {
+                    const progressData = JSON.parse(savedProgress);
+                    
+                    // Load topics progress
+                    topics.forEach(topic => {
+                        const card = document.querySelector(`[data-topic-id="${topic.id}"]`);
+                        if (card && progressData[`topic${topic.id}`]) {
+                            card.classList.add('completed');
+                            card.querySelector('.status-indicator').innerHTML = 
+                                '<i class="fas fa-check-circle"></i><span>مكتمل - انقر لإلغاء</span>';
+                            completedItems++;
+                        }
+                    });
+                    
+                    // Load videos progress
+                    for (let i = 1; i <= 36; i++) {
+                        const videoCard = document.querySelector(`[data-video-id="${i}"]`);
+                        if (videoCard && progressData[`video${i}`]) {
+                            videoCard.classList.add('watched');
+                            const markBtn = videoCard.querySelector('.mark');
+                            markBtn.innerHTML = '<i class="fas fa-check-circle"></i>إلغاء';
+                            markBtn.classList.add('watched');
+                            completedItems++;
+                        }
                     }
-                });
-                
-                for (let i = 1; i <= 36; i++) {
-                    const videoCard = document.querySelector(`[data-video-id="${i}"]`);
-                    if (videoCard && progressData[`video${i}`]) {
-                        videoCard.classList.add('watched');
-                        const markBtn = videoCard.querySelector('.mark');
-                        markBtn.innerHTML = '<i class="fas fa-check-circle"></i>إلغاء';
-                        markBtn.classList.add('watched');
-                        completedItems++;
-                    }
+                    
+                    updateProgress();
                 }
-                
-                updateProgress();
+            } catch (e) {
+                console.log('Error loading progress:', e.message);
             }
         }
 
-        // Update motivational message (once)
+        // Update motivational message
         function updateMotivationalMessage() {
             const randomIndex = Math.floor(Math.random() * motivationalMessages.length);
             motivationText.textContent = `"${motivationalMessages[randomIndex]}"`;
+            
+            // Add fade animation
+            motivationText.style.animation = 'none';
+            setTimeout(() => {
+                motivationText.style.animation = 'fadeIn 1s ease';
+            }, 10);
         }
 
         // Show achievement badge
@@ -1051,6 +1058,50 @@
             setTimeout(() => {
                 achievementBadge.style.transform = 'translate(-50%, -50%) scale(0)';
             }, 3000);
+        }
+
+        // Create celebration effect
+        function createCelebration() {
+            celebration.style.display = 'block';
+            celebration.innerHTML = '';
+            
+            // Create confetti
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.background = getRandomGradient();
+                confetti.style.animationDelay = Math.random() * 3 + 's';
+                confetti.style.width = Math.random() * 10 + 5 + 'px';
+                confetti.style.height = confetti.style.width;
+                
+                celebration.appendChild(confetti);
+                
+                // Remove confetti after animation
+                setTimeout(() => {
+                    if (confetti.parentNode) {
+                        confetti.remove();
+                    }
+                }, 3000);
+            }
+            
+            setTimeout(() => {
+                celebration.style.display = 'none';
+                celebration.innerHTML = '';
+            }, 3000);
+        }
+
+        // Get random gradient for confetti
+        function getRandomGradient() {
+            const gradients = [
+                'linear-gradient(135deg, #0fce7c, #0db46c)',
+                'linear-gradient(135deg, #6a11cb, #2575fc)',
+                'linear-gradient(135deg, #f093fb, #f5576c)',
+                'linear-gradient(135deg, #4facfe, #00f2fe)',
+                'linear-gradient(135deg, #f6d365, #fda085)'
+            ];
+            
+            return gradients[Math.floor(Math.random() * gradients.length)];
         }
 
         // Check for achievements
@@ -1065,6 +1116,7 @@
                 showAchievement('على وشك النهاية! 🎯', 'أتممت 75% من المحتوى');
             } else if (progress === 100) {
                 showAchievement('إنجاز مذهل! 🏆', 'تهانينا! أتممت الأسبوع الأول بنجاح');
+                createCelebration();
             }
         }
 
@@ -1116,45 +1168,74 @@
 
         // Handle collapse functionality
         mainCollapseHeader.addEventListener('click', () => {
-            mainCollapseContent.classList.toggle('show');
+            const isCollapsed = mainCollapseContent.classList.contains('show');
             const icon = mainCollapseHeader.querySelector('.collapse-icon i');
-            if (mainCollapseContent.classList.contains('show')) {
-                icon.className = 'fas fa-chevron-up';
-            } else {
+            
+            if (isCollapsed) {
+                mainCollapseContent.classList.remove('show');
                 icon.className = 'fas fa-chevron-down';
+            } else {
+                mainCollapseContent.classList.add('show');
+                icon.className = 'fas fa-chevron-up';
             }
         });
 
         // Initialize
         window.addEventListener('load', () => {
+            // Load content
             loadTopics();
             loadVideos();
-            loadProgress();
-            updateMotivationalMessage(); // Update once
+            
+            // Load saved progress
+            setTimeout(() => {
+                loadProgress();
+                
+                // Hide loading overlay
+                setTimeout(() => {
+                    loadingOverlay.style.opacity = '0';
+                    setTimeout(() => {
+                        loadingOverlay.style.display = 'none';
+                        
+                        // Open collapse by default
+                        mainCollapseContent.classList.add('show');
+                        mainCollapseHeader.querySelector('.collapse-icon i').className = 'fas fa-chevron-up';
+                        
+                        // Show initial motivational message
+                        updateMotivationalMessage();
+                        
+                        // Change motivational message every 5 seconds
+                        setInterval(updateMotivationalMessage, 5000);
+                    }, 300);
+                }, 1000);
+            }, 1000);
+            
+            // Event delegation for topics
+            topicsGrid.addEventListener('click', (e) => {
+                const card = e.target.closest('.topic-card');
+                if (card) {
+                    handleTopicCompletion(card);
+                }
+            });
+            
+            // Event delegation for videos
+            videosGrid.addEventListener('click', (e) => {
+                const target = e.target.closest('.video-btn');
+                if (!target) return;
+                
+                const videoId = target.dataset.videoId;
+                
+                if (target.classList.contains('watch')) {
+                    handleVideoWatch(videoId);
+                } else if (target.classList.contains('mark')) {
+                    handleVideoMark(target);
+                }
+            });
         });
 
-        // Improve scrolling on mobile
-        document.addEventListener('touchmove', function(e) {}, { passive: true });
-
-        topicsGrid.addEventListener('click', (e) => {
-            const card = e.target.closest('.topic-card');
-            if (card) {
-                handleTopicCompletion(card);
-            }
-        });
-        
-        videosGrid.addEventListener('click', (e) => {
-            const target = e.target.closest('.video-btn');
-            if (!target) return;
-            
-            const videoId = target.dataset.videoId;
-            
-            if (target.classList.contains('watch')) {
-                handleVideoWatch(videoId);
-            } else if (target.classList.contains('mark')) {
-                handleVideoMark(target);
-            }
-        });
+        // تحسين الأسكرول على الجوال
+        document.addEventListener('touchmove', function(e) {
+            // السماح بالأسكرول الطبيعي
+        }, { passive: true });
     </script>
 </body>
 </html>
