@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>BrightMinds - Problem Solving Track</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -34,6 +34,10 @@
             height: 100%;
             -webkit-text-size-adjust: 100%;
             -ms-text-size-adjust: 100%;
+            scroll-behavior: smooth; /* لجعل السكرول أكثر سلاسة، لكن يمكن إزالته إذا كان يسبب مشاكل */
+            overflow-y: scroll; /* ضمان السكرول الرأسي */
+            -webkit-overflow-scrolling: touch; /* تحسين السكرول على iOS ليكون مثل التطبيقات الأصلية */
+            touch-action: manipulation; /* تقليل التأخير في اللمس على الموبايل */
         }
 
         body {
@@ -43,6 +47,11 @@
             width: 100%;
             overflow-x: hidden;
             overflow-y: auto; /* السماح بالأسكرول */
+            -webkit-overflow-scrolling: touch; /* تحسين على iOS */
+            touch-action: manipulation; /* تحسين اللمس */
+            margin: 0;
+            padding: 0;
+            position: relative; /* للتحكم في العناصر الثابتة إذا وجدت */
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             display: block;
@@ -690,7 +699,18 @@
             display: none;
         }
 
-    
+        /* إذا كان هناك عناصر مع خلفيات أو ظلال ثقيلة، يمكن تفعيل تسريع GPU */
+        .heavy-element {
+            transform: translate3d(0, 0, 0); /* تفعيل طبقة GPU للعناصر الثقيلة */
+            will-change: transform; /* إخبار المتصفح بالتحضير للتغييرات */
+        }
+
+        /* لأي عناصر تسبب مشاكل في السكرول، مثل الـ fixed أو sticky */
+        .fixed-element {
+            position: fixed;
+            will-change: transform;
+            backface-visibility: hidden; /* منع التلألؤ */
+        }
 
         /* تحسينات استجابة الشاشات الصغيرة */
         @media (max-width: 767px) {
@@ -800,6 +820,17 @@
             
             .videos-grid {
                 grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+            }
+        }
+
+        /* media query للشاشات الصغيرة (موبايل) لتحسين الأداء */
+        @media (max-width: 768px) {
+            body {
+                overscroll-behavior: none; /* منع السكرول الزائد أو البونس */
+            }
+            /* تقليل التحولات الثقيلة على الموبايل */
+            * {
+                transition: none !important; /* إيقاف الـ transitions إذا كانت تسبب بطء */
             }
         }
 
@@ -1106,7 +1137,7 @@
                     </div>
                 `;
                 videosGrid.appendChild(videoCard);
-            }
+            });
         }
 
         // Update progress
