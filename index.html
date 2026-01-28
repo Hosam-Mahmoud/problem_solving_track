@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BrightMinds - Problem Solving Track</title>
+    <title>Brightmind - Problem Solving Track</title>
     
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -44,7 +44,7 @@
             background-color: var(--background-dark);
             color: var(--text-primary);
             transition: var(--transition);
-            line-height: 1.7;
+            line-height: 1.6;
             min-height: 100vh;
             background-image: 
                 radial-gradient(circle at 20% 30%, rgba(109, 40, 217, 0.1) 0%, transparent 40%),
@@ -60,7 +60,336 @@
             background-clip: text;
         }
         
-        /* قسم التحفيز */
+        /* تصميم الهواتف - إصلاحات رئيسية */
+        @media (max-width: 768px) {
+            :root {
+                --border-radius: 12px;
+                --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            }
+            
+            body {
+                font-size: 14px;
+                line-height: 1.5;
+                padding: 0;
+            }
+            
+            /* العنوان الرئيسي */
+            .main-title {
+                margin: 1rem 0 0.5rem !important;
+                padding: 0.5rem !important;
+            }
+            
+            .main-title h1 {
+                font-size: 1.6rem !important;
+                margin-bottom: 0.3rem !important;
+            }
+            
+            .main-title p {
+                font-size: 0.9rem !important;
+                padding: 0 0.5rem !important;
+            }
+            
+            /* قسم التحفيز */
+            .motivation-section {
+                padding: 1.2rem !important;
+                margin: 0.8rem !important;
+                border-radius: var(--border-radius) !important;
+            }
+            
+            .motivation-section h2 {
+                font-size: 1.3rem !important;
+                margin-bottom: 0.8rem !important;
+            }
+            
+            .motivational-quote {
+                font-size: 0.95rem !important;
+                padding: 1rem !important;
+                margin: 1rem 0 !important;
+                line-height: 1.6 !important;
+            }
+            
+            .motivational-quote::before {
+                font-size: 2.5rem !important;
+                top: -10px !important;
+                right: 10px !important;
+            }
+            
+            .icon-box {
+                width: 40px !important;
+                height: 40px !important;
+                margin-left: 10px !important;
+            }
+            
+            .icon-box i {
+                font-size: 1.2rem !important;
+            }
+            
+            /* بطاقات أعضاء الفريق */
+            .team-members {
+                gap: 10px !important;
+                margin: 1.2rem 0 !important;
+            }
+            
+            .member-card {
+                min-width: 130px !important;
+                padding: 1rem 0.8rem !important;
+                margin-bottom: 0 !important;
+            }
+            
+            .member-name {
+                font-size: 1.1rem !important;
+            }
+            
+            .member-icon {
+                font-size: 2rem !important;
+                margin-bottom: 0.5rem !important;
+            }
+            
+            /* قسم التقدم */
+            .progress-section {
+                padding: 1.2rem !important;
+                margin: 0.8rem !important;
+            }
+            
+            .progress-section h3 {
+                font-size: 1.2rem !important;
+                margin-bottom: 0.8rem !important;
+            }
+            
+            .progress-bar {
+                height: 22px !important;
+                border-radius: 11px !important;
+            }
+            
+            #progressText {
+                font-size: 0.95rem !important;
+                margin-top: 0.8rem !important;
+            }
+            
+            .progress-container .row {
+                margin-top: 1rem !important;
+            }
+            
+            .progress-container .col-md-4 {
+                padding: 0 5px !important;
+            }
+            
+            .progress-container .p-3 {
+                padding: 0.8rem !important;
+            }
+            
+            .progress-container h5 {
+                font-size: 1.1rem !important;
+            }
+            
+            /* كروت الأسبوع */
+            .week-card {
+                margin: 0.8rem !important;
+                border-radius: var(--border-radius) !important;
+            }
+            
+            .week-header {
+                padding: 1rem !important;
+            }
+            
+            .week-header h3 {
+                font-size: 1.1rem !important;
+            }
+            
+            .week-header i {
+                font-size: 1rem !important;
+            }
+            
+            .week-content {
+                padding: 1.2rem !important;
+            }
+            
+            .content-item {
+                padding: 1rem !important;
+                margin-bottom: 1rem !important;
+                border-radius: 10px !important;
+            }
+            
+            .badge-custom {
+                font-size: 0.8rem !important;
+                padding: 4px 10px !important;
+                margin-left: 8px !important;
+            }
+            
+            .content-item h5 {
+                font-size: 1rem !important;
+                line-height: 1.4 !important;
+            }
+            
+            .content-item p {
+                font-size: 0.9rem !important;
+                margin-top: 0.5rem !important;
+            }
+            
+            /* قائمة المهام */
+            .checklist-item {
+                padding: 0.8rem !important;
+                margin-bottom: 0.7rem !important;
+                border-radius: 8px !important;
+            }
+            
+            .checklist-item input[type="checkbox"] {
+                width: 18px !important;
+                height: 18px !important;
+                margin-left: 10px !important;
+            }
+            
+            .checklist-item label {
+                font-size: 0.9rem !important;
+            }
+            
+            /* قائمة الفيديوهات */
+            .video-list {
+                grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)) !important;
+                gap: 8px !important;
+                margin-top: 1rem !important;
+            }
+            
+            .video-item {
+                padding: 0.7rem 0.5rem !important;
+                min-height: 95px !important;
+                border-radius: 8px !important;
+            }
+            
+            .video-number {
+                width: 40px !important;
+                height: 40px !important;
+                font-size: 1rem !important;
+                margin-bottom: 6px !important;
+            }
+            
+            .video-checkbox label {
+                font-size: 0.8rem !important;
+            }
+            
+            .video-checkbox input[type="checkbox"] {
+                width: 16px !important;
+                height: 16px !important;
+            }
+            
+            /* الفوتر */
+            .site-footer {
+                padding: 1.5rem 0.8rem 1rem !important;
+                margin-top: 2rem !important;
+            }
+            
+            .footer-motivation {
+                font-size: 0.9rem !important;
+                line-height: 1.5 !important;
+                padding: 0 !important;
+                margin-bottom: 1rem !important;
+            }
+            
+            .footer-copyright {
+                font-size: 0.85rem !important;
+                margin-top: 1rem !important;
+                padding-top: 1rem !important;
+            }
+            
+            /* إصلاح الهوامش الداخلية */
+            .row {
+                margin-left: -0.5rem !important;
+                margin-right: -0.5rem !important;
+            }
+            
+            .col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto {
+                padding-left: 0.5rem !important;
+                padding-right: 0.5rem !important;
+            }
+        }
+        
+        /* تحسينات للشاشات الصغيرة جداً */
+        @media (max-width: 480px) {
+            .main-title h1 {
+                font-size: 1.4rem !important;
+            }
+            
+            .motivation-section h2 {
+                font-size: 1.2rem !important;
+            }
+            
+            .video-list {
+                grid-template-columns: repeat(auto-fill, minmax(70px, 1fr)) !important;
+                gap: 6px !important;
+            }
+            
+            .video-item {
+                padding: 0.6rem 0.4rem !important;
+                min-height: 85px !important;
+            }
+            
+            .video-number {
+                width: 36px !important;
+                height: 36px !important;
+                font-size: 0.9rem !important;
+            }
+            
+            .team-members {
+                gap: 8px !important;
+            }
+            
+            .member-card {
+                min-width: calc(50% - 8px) !important;
+                padding: 0.8rem 0.5rem !important;
+            }
+            
+            .member-name {
+                font-size: 1rem !important;
+            }
+            
+            .member-icon {
+                font-size: 1.8rem !important;
+            }
+            
+            .progress-container .p-3 {
+                padding: 0.6rem !important;
+            }
+            
+            .progress-container h5 {
+                font-size: 1rem !important;
+            }
+            
+            .progress-container small {
+                font-size: 0.8rem !important;
+            }
+        }
+        
+        /* تحسينات للشاشات الصغيرة جداً جداً */
+        @media (max-width: 360px) {
+            .main-title h1 {
+                font-size: 1.2rem !important;
+            }
+            
+            .motivation-section, .progress-section, .week-card {
+                margin: 0.5rem !important;
+                padding: 1rem !important;
+            }
+            
+            .video-list {
+                grid-template-columns: repeat(auto-fill, minmax(65px, 1fr)) !important;
+            }
+            
+            .video-item {
+                min-height: 80px !important;
+            }
+            
+            .video-number {
+                width: 32px !important;
+                height: 32px !important;
+            }
+            
+            .member-card {
+                min-width: calc(50% - 6px) !important;
+                padding: 0.6rem 0.4rem !important;
+            }
+        }
+        
+        /* قسم التحفيز (النسخة الأساسية) */
         .motivation-section {
             background: linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.9));
             border-radius: var(--border-radius);
@@ -212,7 +541,7 @@
         .video-list {
             margin-top: 1.5rem;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
             gap: 15px;
         }
         
@@ -227,7 +556,7 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
             transition: var(--transition);
             position: relative;
-            min-height: 120px;
+            min-height: 110px;
             text-align: center;
         }
         
@@ -505,57 +834,6 @@
             text-decoration: underline;
         }
         
-        /* تحسينات للهواتف */
-        @media (max-width: 768px) {
-            .team-members {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .member-card {
-                width: 100%;
-                max-width: 320px;
-            }
-            
-            .motivation-section {
-                padding: 1.8rem;
-                margin: 1rem;
-            }
-            
-            .week-content {
-                padding: 1.5rem;
-            }
-            
-            .content-item {
-                padding: 1.2rem;
-            }
-            
-            .video-list {
-                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-                gap: 10px;
-            }
-            
-            .progress-section, .week-card {
-                margin: 1rem;
-            }
-            
-            .site-footer {
-                padding: 2rem 1rem 1.5rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .video-list {
-                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            }
-            
-            .video-number {
-                width: 45px;
-                height: 45px;
-                font-size: 1.1rem;
-            }
-        }
-        
         /* تأثيرات النص */
         .highlight {
             color: var(--accent-color);
@@ -577,7 +855,7 @@
         
         /* تخصيص scrollbar */
         ::-webkit-scrollbar {
-            width: 10px;
+            width: 8px;
         }
         
         ::-webkit-scrollbar-track {
@@ -586,7 +864,7 @@
         
         ::-webkit-scrollbar-thumb {
             background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
-            border-radius: 5px;
+            border-radius: 4px;
         }
         
         ::-webkit-scrollbar-thumb:hover {
@@ -644,28 +922,86 @@
             max-width: 800px;
             margin: 0 auto;
         }
+        
+        /* تحسينات إضافية للهواتف */
+        @media (max-width: 768px) {
+            .row {
+                margin-left: -8px !important;
+                margin-right: -8px !important;
+            }
+            
+            [class*="col-"] {
+                padding-left: 8px !important;
+                padding-right: 8px !important;
+            }
+            
+            body {
+                padding-bottom: 20px;
+            }
+            
+            /* تحسين حجم النصوص */
+            p, li, span, div {
+                font-size: 0.9rem !important;
+            }
+            
+            /* تحسين تباين الألوان للقراءة */
+            .content-item {
+                border-right-width: 3px !important;
+            }
+            
+            /* تحسين تفاعلية العناصر */
+            .video-number:active {
+                transform: scale(0.95);
+            }
+            
+            .member-card:active {
+                transform: scale(0.98);
+            }
+            
+            /* تقليل تأثيرات hover على الهواتف */
+            .week-card:hover {
+                transform: none;
+            }
+            
+            .content-item:hover {
+                transform: none;
+            }
+            
+            .video-item:hover {
+                transform: none;
+            }
+            
+            .member-card:hover {
+                transform: none;
+            }
+            
+            .checklist-item:hover {
+                transform: none;
+            }
+        }
     </style>
 </head>
 <body>
     <!-- العنوان الرئيسي -->
     <div class="main-title fade-in">
-        <h1 class="glow-text">BrightMinds - Problem Solving Track</h1>
+        <h1 class="glow-text">Brightmind - Problem Solving Track</h1>
         <p>مسار تعليمي متكامل لتعلم أساسيات حل المشكلات البرمجية والاستعداد للمسابقات البرمجية</p>
     </div>
     
     <!-- قسم التحفيز -->
     <div class="motivation-section fade-in delay-1">
-        <div class="row">
-            <div class="col-lg-9">
-                <h2 class="mb-3 glow-text">🚀 رحلة فريق BrightMinds في عالم Problem Solving</h2>
-                <p class="mb-3" style="font-size: 1.1rem;">معاً في هذا المسار التعليمي المتكامل، سنتعلم أساسيات حل المشكلات البرمجية خطوة بخطوة، من المفاهيم الأساسية إلى المستويات المتقدمة. التزامنا واستمرارنا سيوصلنا لمستويات عالمية إن شاء الله.</p>
+        <div class="row align-items-center">
+            <div class="col-lg-9 col-md-8">
+                <h2 class="mb-3 glow-text">🚀 رحلة فريق Brightmind</h2>
+                <p class="mb-3">معاً في هذا المسار التعليمي المتكامل، سنتعلم أساسيات حل المشكلات البرمجية خطوة بخطوة. التزامنا واستمرارنا سيوصلنا لمستويات عالمية إن شاء الله.</p>
                 
                 <div class="motivational-quote">
                     "النجاح ليس صدفة، إنه عمل شاق، مثابرة، تعلم، دراسة، تضحية، والأهم من ذلك، <span class="highlight">حب ما تفعله أو تتعلمه</span>"
                 </div>
                 
+                <p class="mb-3">فريقنا مكون من أعضاء متحمسين للتعلم والتطور:</p>
             </div>
-            <div class="col-lg-3 text-center d-flex align-items-center justify-content-center">
+            <div class="col-lg-3 col-md-4 text-center">
                 <div class="icon-box">
                     <i class="fas fa-users"></i>
                 </div>
@@ -675,19 +1011,27 @@
         <!-- أعضاء الفريق - أسماء فقط -->
         <div class="team-members fade-in delay-2">
             <div class="member-card">
-               
+                <div class="member-icon">
+                    <i class="fas fa-crown"></i>
+                </div>
                 <h3 class="member-name">حسام محمود</h3>
             </div>
             <div class="member-card">
-          
+                <div class="member-icon">
+                    <i class="fas fa-code"></i>
+                </div>
                 <h3 class="member-name">الاء عماد</h3>
             </div>
             <div class="member-card">
-              
+                <div class="member-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
                 <h3 class="member-name">علا حسام</h3>
             </div>
             <div class="member-card">
-               
+                <div class="member-icon">
+                    <i class="fas fa-server"></i>
+                </div>
                 <h3 class="member-name">اسلام حاتم</h3>
             </div>
         </div>
@@ -695,12 +1039,12 @@
     
     <!-- قسم التقدم -->
     <div class="progress-section fade-in delay-2">
-        <div class="row">
-            <div class="col-lg-9">
-                <h3 class="mb-3">📊 تقدمك في المسار التعليمي</h3>
-                <p>تابع تقدمك في استيعاب محتوى المسار. كل ما تكمل عناصر أكثر، يزيد تقدمك! البيانات تحفظ تلقائياً ولا يتم مسحها إلا إذا مسحت بيانات المتصفح.</p>
+        <div class="row align-items-center">
+            <div class="col-lg-9 col-md-8">
+                <h3 class="mb-3">📊 تقدمك في المسار</h3>
+                <p>تابع تقدمك في استيعاب محتوى المسار. البيانات تحفظ تلقائياً ولا يتم مسحها إلا إذا مسحت بيانات المتصفح.</p>
             </div>
-            <div class="col-lg-3 text-center d-flex align-items-center justify-content-center">
+            <div class="col-lg-3 col-md-4 text-center">
                 <div class="icon-box">
                     <i class="fas fa-trophy"></i>
                 </div>
@@ -718,19 +1062,19 @@
             <div class="mt-3 text-center" id="progressText" style="font-size: 1.1rem;">لم تبدأ بعد، ابدأ بالتعلم الآن! 💪</div>
             
             <div class="row mt-4">
-                <div class="col-md-4 text-center">
+                <div class="col-4 text-center">
                     <div class="p-3 rounded" style="background: rgba(255,255,255,0.05);">
                         <h5 id="completedCount" class="mb-0">0</h5>
                         <small>مكتمل</small>
                     </div>
                 </div>
-                <div class="col-md-4 text-center">
+                <div class="col-4 text-center">
                     <div class="p-3 rounded" style="background: rgba(255,255,255,0.05);">
                         <h5 id="remainingCount" class="mb-0">0</h5>
                         <small>متبقي</small>
                     </div>
                 </div>
-                <div class="col-md-4 text-center">
+                <div class="col-4 text-center">
                     <div class="p-3 rounded" style="background: rgba(255,255,255,0.05);">
                         <h5 id="totalCount" class="mb-0">0</h5>
                         <small>إجمالي</small>
@@ -749,12 +1093,12 @@
         
         <div class="collapse show" id="week1">
             <div class="week-content">
-                <p class="mb-4" style="font-size: 1.1rem;">في هذا الأسبوع، سنتعرف على <span class="highlight">عقلية حل المشكلات</span> قبل كتابة أي كود، وأساسيات البرمجة بلغة C++، والمصفوفات والنصوص، مع مجموعة شاملة من الفيديوهات التعليمية.</p>
+                <p class="mb-4">في هذا الأسبوع، سنتعرف على <span class="highlight">عقلية حل المشكلات</span> قبل كتابة أي كود، وأساسيات البرمجة بلغة C++، والمصفوفات والنصوص، مع مجموعة شاملة من الفيديوهات التعليمية.</p>
                 
                 <!-- قسم المرحلة 0 -->
                 <div class="content-item">
-                    <h5><span class="badge-custom">المرحلة 0</span> عقلية حل المشكلات (مهم قبل أي كود)</h5>
-                    <p class="mt-3">قبل كتابة أي سطر كود، يجب أن تفهم المسألة جيداً، تحلل المدخلات والمخرجات، تقرأ القيود (Constraints)، تفكر في أبسط حل ممكن (Brute Force)، ثم تحول الفكرة إلى كود.</p>
+                    <h5><span class="badge-custom">المرحلة 0</span> عقلية حل المشكلات</h5>
+                    <p class="mt-3">قبل كتابة أي سطر كود، يجب أن تفهم المسألة جيداً، تحلل المدخلات والمخرجات، تقرأ القيود، تفكر في أبسط حل ممكن، ثم تحول الفكرة إلى كود.</p>
                     
                     <div class="checklist-item">
                         <input type="checkbox" id="item1" class="content-check" data-week="1" data-item="1">
@@ -763,7 +1107,7 @@
                     
                     <div class="checklist-item">
                         <input type="checkbox" id="item2" class="content-check" data-week="1" data-item="2">
-                        <label for="item2">قراءة القيود (Constraints) وتحليلها</label>
+                        <label for="item2">قراءة القيود وتحليلها</label>
                     </div>
                     
                     <div class="checklist-item">
@@ -780,7 +1124,7 @@
                 <!-- قسم أساسيات C++ -->
                 <div class="content-item">
                     <h5><span class="badge-custom">أساسيات C++</span> أنواع البيانات، الشروط، الحلقات والدوال</h5>
-                    <p class="mt-3">تعلم أساسيات لغة C++ الضرورية لحل المشكلات البرمجية، مع التركيز على المفاهيم المهمة مثل الفرق بين int و long long، ومتى نستخدم كل نوع.</p>
+                    <p class="mt-3">تعلم أساسيات لغة C++ الضرورية لحل المشكلات البرمجية.</p>
                     
                     <div class="checklist-item">
                         <input type="checkbox" id="item5" class="content-check" data-week="1" data-item="5">
@@ -804,18 +1148,18 @@
                     
                     <div class="checklist-item">
                         <input type="checkbox" id="item9" class="content-check" data-week="1" data-item="9">
-                        <label for="item9">نطاق المتغيرات (Scope) وأنواع التمرير (Passing)</label>
+                        <label for="item9">نطاق المتغيرات وأنواع التمرير</label>
                     </div>
                 </div>
                 
                 <!-- قسم المصفوفات والنصوص -->
                 <div class="content-item">
                     <h5><span class="badge-custom">المصفوفات والنصوص</span> هياكل البيانات الأساسية</h5>
-                    <p class="mt-3">تعلم كيفية التعامل مع المصفوفات (Arrays) والنصوص (Strings) في C++، بما في ذلك الفرق بين Array و Vector، ومعالجة النصوص، ومصفوفات التكرار.</p>
+                    <p class="mt-3">تعلم كيفية التعامل مع المصفوفات والنصوص في C++.</p>
                     
                     <div class="checklist-item">
                         <input type="checkbox" id="item10" class="content-check" data-week="1" data-item="10">
-                        <label for="item10">الفرق بين Array و Vector في C++ ومتى نستخدم كل منهما</label>
+                        <label for="item10">الفرق بين Array و Vector في C++</label>
                     </div>
                     
                     <div class="checklist-item">
@@ -830,7 +1174,7 @@
                     
                     <div class="checklist-item">
                         <input type="checkbox" id="item13" class="content-check" data-week="1" data-item="13">
-                        <label for="item13">مصفوفات التكرار (Frequency Arrays) وتطبيقاتها</label>
+                        <label for="item13">مصفوفات التكرار وتطبيقاتها</label>
                     </div>
                 </div>
                 
@@ -847,46 +1191,46 @@
                 <!-- قسم مسائل تدريب -->
                 <div class="content-item">
                     <h5><span class="badge-custom">مسائل تدريبية</span> تطبيق المفاهيم على مسائل حقيقية</h5>
-                    <p class="mt-3">مسائل متنوعة لتطبيق ما تعلمته في المسار. حاول حل المسائل بنفسك قبل مشاهدة الحلول.</p>
+                    <p class="mt-3">مسائل متنوعة لتطبيق ما تعلمته في المسار.</p>
                     
                     <div class="checklist-item">
                         <input type="checkbox" id="problem1" class="content-check" data-week="1" data-item="37">
-                        <label for="problem1">Problem 1: Sum of Two Integers - جمع رقمين</label>
+                        <label for="problem1">Problem 1: Sum of Two Integers</label>
                     </div>
                     
                     <div class="checklist-item">
                         <input type="checkbox" id="problem2" class="content-check" data-week="1" data-item="38">
-                        <label for="problem2">Problem 2: Maximum of Three Numbers - أكبر ثلاثة أرقام</label>
+                        <label for="problem2">Problem 2: Maximum of Three Numbers</label>
                     </div>
                     
                     <div class="checklist-item">
                         <input type="checkbox" id="problem3" class="content-check" data-week="1" data-item="39">
-                        <label for="problem3">Problem 3: Sum of Even Numbers - مجموع الأرقام الزوجية</label>
+                        <label for="problem3">Problem 3: Sum of Even Numbers</label>
                     </div>
                     
                     <div class="checklist-item">
                         <input type="checkbox" id="problem4" class="content-check" data-week="1" data-item="40">
-                        <label for="problem4">Problem 4: Modify the Value - تعديل القيمة</label>
+                        <label for="problem4">Problem 4: Modify the Value</label>
                     </div>
                     
                     <div class="checklist-item">
                         <input type="checkbox" id="problem5" class="content-check" data-week="1" data-item="41">
-                        <label for="problem5">Problem 5: Find the Maximum Element - إيجاد أكبر عنصر</label>
+                        <label for="problem5">Problem 5: Find the Maximum Element</label>
                     </div>
                     
                     <div class="checklist-item">
                         <input type="checkbox" id="problem6" class="content-check" data-week="1" data-item="42">
-                        <label for="problem6">Problem 6: Count Character Frequency - عد تكرار الحروف</label>
+                        <label for="problem6">Problem 6: Count Character Frequency</label>
                     </div>
                     
                     <div class="checklist-item">
                         <input type="checkbox" id="problem7" class="content-check" data-week="1" data-item="43">
-                        <label for="problem7">Problem 7: Reverse an Array - عكس المصفوفة</label>
+                        <label for="problem7">Problem 7: Reverse an Array</label>
                     </div>
                     
                     <div class="checklist-item">
                         <input type="checkbox" id="problem8" class="content-check" data-week="1" data-item="44">
-                        <label for="problem8">Problem 8: Check Palindrome String - التحقق من النص المتناظر</label>
+                        <label for="problem8">Problem 8: Check Palindrome String</label>
                     </div>
                 </div>
             </div>
@@ -898,13 +1242,13 @@
         <div class="container">
             <div class="footer-motivation">
                 <i class="fas fa-quote-left"></i>
-                الاستمرارية والتعلم المستمر هما مفتاح النجاح في عالم البرمجة وحل المشكلات. لا تستعجل النتائج، فكل خطوة تخطوها تقربك أكثر من هدفك. تذكر أن الرحلة أهم من الوصول!
+                الاستمرارية والتعلم المستمر هما مفتاح النجاح في عالم البرمجة وحل المشكلات. لا تستعجل النتائج، فكل خطوة تخطوها تقربك أكثر من هدفك.
                 <i class="fas fa-quote-right"></i>
             </div>
             
             <div class="footer-copyright">
-                <p>© 2026 BrightMinds Team - Problem Solving Track. جميع الحقوق محفوظة.</p>
-                <p>تم التطوير بهدف تعليمي وتدريبي لفريق BrightMinds</p>
+                <p>© 2023 Brightmind Team - Problem Solving Track. جميع الحقوق محفوظة.</p>
+                <p>تم التطوير بهدف تعليمي وتدريبي لفريق Brightmind</p>
             </div>
         </div>
     </footer>
@@ -1030,7 +1374,7 @@
                             </div>
                             <div class="video-checkbox">
                                 <input type="checkbox" id="video-check-${i}" class="video-check" data-video-index="${i}">
-                                <label for="video-check-${i}" id="video-label-${i}">تم المشاهدة</label>
+                                <label for="video-check-${i}" id="video-label-${i}">تم</label>
                             </div>
                         </div>
                     `;
@@ -1147,6 +1491,13 @@
             
             // تحديث تلقائي للتقدم كل ثانية (للتأكد من المزامنة)
             setInterval(updateProgressBar, 1000);
+            
+            // تحسين الأداء على الهواتف
+            if ('ontouchstart' in window) {
+                // تحسين تفاعلية العناصر للشاشات التي تعمل باللمس
+                $('.video-number').css('cursor', 'pointer');
+                $('.member-card').css('cursor', 'pointer');
+            }
         });
     </script>
 </body>
