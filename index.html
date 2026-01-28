@@ -554,54 +554,6 @@
             font-size: clamp(0.9rem, 3.5vw, 1.1rem);
         }
 
-        /* Loading Overlay - Simplified */
-        .loading-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--primary);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 99999;
-        }
-
-        .loading-content {
-            text-align: center;
-            color: white;
-            padding: 20px;
-            width: 90%;
-            max-width: 300px;
-        }
-
-        .loading-spinner {
-            width: 60px;
-            height: 60px;
-            border: 6px solid rgba(255, 255, 255, 0.1);
-            border-top: 6px solid var(--accent);
-            border-radius: 50%;
-            animation: spin 1.5s linear infinite;
-            margin: 0 auto 20px;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .loading-content h3 {
-            font-size: clamp(1.2rem, 4vw, 1.8rem);
-            margin-bottom: 10px;
-        }
-
-        .loading-content p {
-            font-size: clamp(0.9rem, 3.5vw, 1.1rem);
-        }
-
-        /* Celebration - Removed for simplicity */
-
         .heavy-element {
             transform: translate3d(0, 0, 0);
             will-change: transform;
@@ -765,15 +717,6 @@
     </style>
 </head>
 <body>
-    <!-- Loading Overlay -->
-    <div class="loading-overlay" id="loadingOverlay">
-        <div class="loading-content">
-            <div class="loading-spinner"></div>
-            <h3>BrightMinds Team</h3>
-            <p>جاري تحضير تجربة التعلم المميزة...</p>
-        </div>
-    </div>
-
     <!-- Achievement Badge -->
     <div class="achievement-badge" id="achievementBadge">
         <div class="badge-icon">
@@ -892,7 +835,6 @@
 
     <script>
         // DOM Elements
-        const loadingOverlay = document.getElementById('loadingOverlay');
         const achievementBadge = document.getElementById('achievementBadge');
         const badgeTitle = document.getElementById('badgeTitle');
         const badgeMessage = document.getElementById('badgeMessage');
@@ -1185,9 +1127,6 @@
             loadVideos();
             loadProgress();
             updateMotivationalMessage(); // Update once
-
-            // Hide loading immediately after load
-            loadingOverlay.style.display = 'none';
 
             // Open collapse by default
             mainCollapseContent.classList.add('show');
