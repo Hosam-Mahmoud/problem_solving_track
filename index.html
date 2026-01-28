@@ -4,1238 +4,1150 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BrightMinds - Problem Solving Track</title>
-    <!-- Font Awesome -->
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --primary: #1a1a2e;
-            --secondary: #16213e;
-            --accent: #0fce7c;
-            --accent-dark: #0db46c;
-            --light: #0d1117;
-            --dark: #f0f6fc;
-            --gradient-1: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            --gradient-2: linear-gradient(135deg, #0fce7c 0%, #0db46c 100%);
-            --gradient-3: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-            --gradient-4: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            --transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --primary-color: #6d28d9;
+            --primary-light: #8b5cf6;
+            --secondary-color: #0ea5e9;
+            --accent-color: #06b6d4;
+            --background-dark: #0f172a;
+            --card-dark: #1e293b;
+            --card-border: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --border-radius: 16px;
+            --box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
         }
-
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', 'Tajawal', sans-serif;
         }
-
-        /* إصلاح مشكلة الأسكرول */
-        html {
-            height: 100%;
-            -webkit-text-size-adjust: 100%;
-            -ms-text-size-adjust: 100%;
-        }
-
+        
         body {
-            background: var(--light);
-            color: var(--dark);
+            font-family: 'Tajawal', 'Cairo', sans-serif;
+            background-color: var(--background-dark);
+            color: var(--text-primary);
+            transition: var(--transition);
+            line-height: 1.7;
             min-height: 100vh;
-            width: 100%;
-            overflow-x: hidden;
-            overflow-y: auto; /* السماح بالأسكرول */
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            display: block;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(109, 40, 217, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(14, 165, 233, 0.1) 0%, transparent 40%);
         }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-light), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-
-        ::-webkit-scrollbar-track {
-            background: var(--secondary);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--accent);
-            border-radius: 4px;
-        }
-
-        /* Container for all content */
-        .container {
-            width: 100%;
-            padding: 0 20px;
-            margin: 0 auto;
-            display: block;
-            position: relative;
-        }
-
-        @media (min-width: 576px) {
-            .container {
-                max-width: 540px;
-                padding: 0 15px;
-            }
-        }
-
-        @media (min-width: 768px) {
-            .container {
-                max-width: 720px;
-                padding: 0 15px;
-            }
-        }
-
-        @media (min-width: 992px) {
-            .container {
-                max-width: 960px;
-                padding: 0 15px;
-            }
-        }
-
-        @media (min-width: 1200px) {
-            .container {
-                max-width: 1140px;
-                padding: 0 15px;
-            }
-        }
-
-        .text-center {
-            text-align: center !important;
-        }
-
-        .mb-2 {
-            margin-bottom: 0.5rem !important;
-        }
-
-        .mb-4 {
-            margin-bottom: 1.5rem !important;
-        }
-
-        .text-muted {
-            color: rgba(240, 246, 252, 0.7) !important;
-        }
-
-        /* Floating Background - Simplified for mobile */
-        .floating-bg {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: -1;
-            overflow: hidden;
-            opacity: 0.3;
-            pointer-events: none;
-        }
-
-        .floating-element {
-            position: absolute;
-            border-radius: 50%;
-            background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
-            opacity: 0.1;
-        }
-
-        .floating-element:nth-child(1) {
-            width: 200px;
-            height: 200px;
-            top: -100px;
-            right: -100px;
-        }
-
-        .floating-element:nth-child(2) {
-            width: 150px;
-            height: 150px;
-            bottom: -75px;
-            left: -75px;
-            background: radial-gradient(circle, #6a11cb 0%, transparent 70%);
-        }
-
-        /* Header */
-        .main-header {
-            background: var(--gradient-1);
-            color: white;
-            padding: 40px 0 30px;
+        
+        /* قسم التحفيز */
+        .motivation-section {
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.9));
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            margin: 2rem auto;
+            box-shadow: var(--box-shadow);
+            border: 1px solid var(--card-border);
             position: relative;
             overflow: hidden;
-            clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
-            margin-bottom: 20px;
-            width: 100%;
-            display: block;
+            max-width: 1200px;
         }
-
-        .main-header::before {
+        
+        .motivation-section::before {
             content: '';
             position: absolute;
             top: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(109, 40, 217, 0.2) 0%, transparent 70%);
+        }
+        
+        .motivation-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(15, 206, 124, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(106, 17, 203, 0.1) 0%, transparent 50%);
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(14, 165, 233, 0.2) 0%, transparent 70%);
         }
-
-        /* Team name - Responsive */
-        .team-name {
-            font-size: clamp(2rem, 8vw, 4.5rem);
-            font-weight: 900;
-            background: linear-gradient(45deg, #0fce7c, #6a11cb, #2575fc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-            margin-bottom: 10px;
-            line-height: 1.2;
-            padding: 0 10px;
-            word-break: break-word;
-        }
-
-        /* Team track - Responsive */
-        .team-track {
-            font-size: clamp(1.1rem, 4vw, 2.2rem);
-            font-weight: 300;
-            opacity: 0.9;
-            margin-bottom: 30px;
-            color: var(--accent);
+        
+        .motivational-quote {
+            font-style: italic;
+            border-right: 3px solid var(--accent-color);
+            padding-right: 20px;
+            margin: 2rem 0;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--text-primary);
             position: relative;
-            display: inline-block;
-            padding: 8px 20px;
-            border: 2px solid var(--accent);
-            border-radius: 50px;
-            background: rgba(15, 206, 124, 0.1);
-            line-height: 1.4;
-            max-width: 90%;
-            word-break: break-word;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1.5rem;
+            border-radius: 12px;
         }
-
-        /* Team members - Mobile optimized */
-        .team-members {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-            margin-top: 30px;
-            width: 100%;
-            padding: 0 10px;
-            margin-bottom: 90px;
+        
+        .motivational-quote::before {
+            content: '"';
+            position: absolute;
+            top: -15px;
+            right: 15px;
+            font-size: 4rem;
+            color: var(--primary-color);
+            opacity: 0.3;
+            font-family: serif;
         }
-
-        .member-card {
-            background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
-            backdrop-filter: blur(10px);
-            padding: 20px;
-            border-radius: 16px;
-            border: 2px solid transparent;
+        
+        /* كروت الأسابيع */
+        .week-card {
+            background-color: var(--card-dark);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin: 2rem auto;
+            overflow: hidden;
+            border: 1px solid var(--card-border);
             transition: var(--transition);
             position: relative;
-            overflow: hidden;
-            font-weight: 700;
-            font-size: clamp(0.9rem, 3.5vw, 1.3rem);
-            color: white;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            width: 100%;
-            max-width: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-
-        .member-icon {
-            margin-left: 12px;
-            color: var(--accent);
-            font-size: clamp(0.9rem, 4vw, 1.2rem);
-        }
-
-        /* Progress Section - Mobile optimized */
-        .progress-container {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 20px;
-            padding: 25px 20px;
-            margin: 30px auto;
-            width: 100%;
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            box-shadow: var(--shadow);
-            position: relative;
-            overflow: hidden;
-            max-width: 500px;
-        }
-
-        .progress-circle {
-            width: 180px;
-            height: 180px;
-            margin: 0 auto 25px;
-            position: relative;
-        }
-
-        @media (max-width: 350px) {
-            .progress-circle {
-                width: 150px;
-                height: 150px;
-            }
-        }
-
-        .progress-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: clamp(2rem, 6vw, 3.2rem);
-            font-weight: 900;
-            background: linear-gradient(45deg, #0fce7c, #6a11cb);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 3px 10px rgba(0,0,0,0.3);
-        }
-
-        /* Motivation Section - Mobile optimized */
-        .motivation-container {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 20px;
-            padding: 25px 20px;
-            margin: 30px auto;
-            width: 100%;
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            min-height: auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            max-width: 900px;
-        }
-
-        .motivation-quote {
-            font-size: clamp(1.1rem, 3.5vw, 1.8rem);
-            line-height: 1.6;
-            color: var(--dark);
-            text-align: center;
-            margin-bottom: 15px;
-            font-weight: 500;
-            padding: 0 5px;
-        }
-
-        .motivation-author {
-            text-align: center;
-            color: var(--accent);
-            font-size: clamp(0.9rem, 3vw, 1.2rem);
-            font-weight: 700;
-            padding: 0 5px;
-        }
-
-        /* Main Collapse - Mobile optimized */
-        .main-collapse {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 20px;
-            margin: 30px auto;
-            width: 100%;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
             max-width: 1200px;
         }
-
-        .collapse-header {
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
+        
+        .week-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            border-color: var(--primary-light);
+        }
+        
+        .week-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        .week-header {
+            background: linear-gradient(90deg, rgba(109, 40, 217, 0.2), rgba(30, 41, 59, 0.8));
             color: white;
-            padding: 25px 20px;
+            padding: 1.5rem;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            border-bottom: 1px solid var(--card-border);
             transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            min-height: 70px;
         }
-
-        .collapse-title {
-            font-size: clamp(1.1rem, 4vw, 2.2rem);
-            font-weight: 700;
+        
+        .week-header:hover {
+            background: linear-gradient(90deg, rgba(109, 40, 217, 0.3), rgba(30, 41, 59, 0.9));
+        }
+        
+        .week-header h3 {
+            margin: 0;
+            font-size: 1.4rem;
             display: flex;
             align-items: center;
-            gap: 12px;
-            text-align: right;
-            flex: 1;
-            padding-right: 10px;
         }
-
-        .collapse-title i {
-            font-size: clamp(1rem, 3.5vw, 1.8rem);
-            min-width: 30px;
+        
+        .week-header h3 i {
+            margin-left: 12px;
+            font-size: 1.2rem;
         }
-
-        .collapse-icon {
-            font-size: clamp(1rem, 3.5vw, 1.8rem);
-            min-width: 30px;
-            text-align: center;
+        
+        .week-content {
+            padding: 2rem;
         }
-
-        .collapse-content {
-            padding: 0;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.8s cubic-bezier(0.77, 0, 0.175, 1);
-        }
-
-        .collapse-content.show {
-            padding: 25px 20px;
-            max-height: 5000px;
-        }
-
-        /* Week Content Section */
-        .week-content-section {
-            margin-bottom: 30px;
-        }
-
-        .section-title {
-            font-size: clamp(1.2rem, 4vw, 2rem);
-            margin-bottom: 25px;
-            color: var(--accent);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding-bottom: 12px;
-            border-bottom: 2px solid rgba(15, 206, 124, 0.3);
-            position: relative;
-            line-height: 1.4;
-        }
-
-        .section-title i {
-            font-size: clamp(1rem, 3.5vw, 1.5rem);
-        }
-
-        /* Topics Grid - Mobile optimized */
-        .topics-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .topic-card {
-            background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-            border-radius: 18px;
-            padding: 25px 20px;
+        
+        .content-item {
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 12px;
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.7), rgba(15, 23, 42, 0.7));
+            border-right: 4px solid var(--primary-color);
+            border-left: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             transition: var(--transition);
-            border: 2px solid rgba(255, 255, 255, 0.08);
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            width: 100%;
         }
-
-        .topic-header {
-            display: flex;
-            align-items: flex-start;
-            gap: 18px;
-            margin-bottom: 15px;
+        
+        .content-item:hover {
+            border-right-color: var(--accent-color);
+            transform: translateX(-5px);
         }
-
-        .topic-number {
-            background: linear-gradient(135deg, #0fce7c, #6a11cb);
+        
+        .badge-custom {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 900;
-            font-size: clamp(1.3rem, 4vw, 2rem);
-            box-shadow: 0 6px 15px rgba(15, 206, 124, 0.3);
-            flex-shrink: 0;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-left: 12px;
+            font-size: 0.9rem;
+            display: inline-block;
+            box-shadow: 0 4px 10px rgba(109, 40, 217, 0.3);
         }
-
-        .topic-title {
-            font-size: clamp(1rem, 3.5vw, 1.6rem);
-            font-weight: 700;
-            color: var(--dark);
-            line-height: 1.5;
-            text-align: right;
-            flex: 1;
-        }
-
-        .topic-status {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .status-indicator {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            font-size: clamp(0.85rem, 3vw, 1.1rem);
-            color: rgba(255, 255, 255, 0.8);
-            padding: 10px 25px;
-            border-radius: 50px;
-            background: rgba(255,255,255,0.05);
-            transition: var(--transition);
-            width: 100%;
-            max-width: 280px;
-            text-align: center;
-        }
-
-        /* Videos Section - Mobile optimized */
-        .videos-section {
-            margin-top: 30px;
-        }
-
-        .videos-grid {
+        
+        /* قائمة الفيديوهات المعدلة */
+        .video-list {
+            margin-top: 1.5rem;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             gap: 15px;
-            margin-top: 25px;
         }
-
-        @media (max-width: 480px) {
-            .videos-grid {
-                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-                gap: 12px;
-            }
-        }
-
-        @media (max-width: 360px) {
-            .videos-grid {
-                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-                gap: 10px;
-            }
-        }
-
-        .video-card {
-            background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-            border-radius: 16px;
-            padding: 20px 15px;
-            text-align: center;
+        
+        .video-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
             transition: var(--transition);
-            border: 2px solid rgba(255, 255, 255, 0.08);
-            cursor: pointer;
             position: relative;
-            overflow: hidden;
-            width: 100%;
-            min-height: 130px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            min-height: 120px;
+            text-align: center;
         }
-
+        
+        .video-item:hover {
+            background: rgba(109, 40, 217, 0.1);
+            border-color: rgba(109, 40, 217, 0.3);
+            transform: translateY(-5px);
+        }
+        
         .video-number {
-            font-size: clamp(1.8rem, 5vw, 3rem);
-            font-weight: 900;
-            margin-bottom: 10px;
-            background: linear-gradient(45deg, #0fce7c, #6a11cb);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            line-height: 1;
-        }
-
-        .video-actions {
             display: flex;
-            flex-direction: column;
-            gap: 10px;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 8px rgba(109, 40, 217, 0.3);
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: var(--transition);
+        }
+        
+        .video-number:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(109, 40, 217, 0.5);
+        }
+        
+        .video-checkbox {
             margin-top: 10px;
         }
-
-        .video-btn {
-            padding: 8px;
+        
+        .video-checkbox input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: var(--primary-color);
+        }
+        
+        .video-checkbox label {
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-right: 5px;
+        }
+        
+        .video-completed {
+            color: var(--success-color) !important;
+            font-weight: bold;
+        }
+        
+        /* قائمة المهام */
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 1rem;
             border-radius: 10px;
-            border: none;
-            font-weight: 700;
+            background: rgba(255, 255, 255, 0.03);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .checklist-item:hover {
+            background: rgba(109, 40, 217, 0.08);
+            border-color: rgba(109, 40, 217, 0.2);
+        }
+        
+        .checklist-item input[type="checkbox"] {
+            margin-left: 15px;
+            width: 22px;
+            height: 22px;
+            cursor: pointer;
+            accent-color: var(--primary-color);
+            position: relative;
+        }
+        
+        .checklist-item label {
+            flex-grow: 1;
             cursor: pointer;
             transition: var(--transition);
+        }
+        
+        .checklist-item:hover label {
+            color: var(--text-primary);
+        }
+        
+        .completed {
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+        
+        /* قسم التقدم */
+        .progress-section {
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.9));
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--box-shadow);
+            margin: 2rem auto;
+            border: 1px solid var(--card-border);
+            position: relative;
+            overflow: hidden;
+            max-width: 1200px;
+        }
+        
+        .progress-section::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(14, 165, 233, 0.1) 0%, transparent 70%);
+        }
+        
+        .progress-container {
+            margin-top: 1.5rem;
+        }
+        
+        .progress-bar {
+            height: 28px;
+            border-radius: 14px;
+            overflow: hidden;
+            background-color: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+            border-radius: 14px;
+            transition: width 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.2), 
+                transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        /* أعضاء الفريق - تصميم جديد */
+        .team-members {
             display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 2rem 0;
+        }
+        
+        .member-card {
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.8));
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            text-align: center;
+            min-width: 180px;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            border: 1px solid var(--card-border);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 6px;
-            font-size: clamp(0.75rem, 2.8vw, 0.9rem);
-            width: 100%;
-            min-height: 36px;
         }
-
-        /* Footer - Mobile optimized */
-        .footer {
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
-            color: white;
-            text-align: center;
-            padding: 50px 0 30px;
-            margin-top: 50px;
-            clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
-            position: relative;
+        
+        .member-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
             width: 100%;
-            display: block;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), transparent);
         }
-
-        .footer-title {
-            font-size: clamp(1.5rem, 5vw, 2.5rem);
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, #0fce7c, #6a11cb);
+        
+        .member-card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            border-color: var(--primary-light);
+        }
+        
+        .member-name {
+            color: var(--text-primary);
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0;
+            background: linear-gradient(135deg, var(--primary-light), var(--secondary-color));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-weight: 900;
-            padding: 0 10px;
+            background-clip: text;
         }
-
-        .developer {
-            font-size: clamp(1rem, 3.5vw, 1.3rem);
-            margin-top: 25px;
-            color: var(--accent);
-            font-weight: 700;
+        
+        .member-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* الفوتر الجديد */
+        .site-footer {
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.95));
+            color: var(--text-secondary);
+            padding: 3rem 0 2rem;
+            margin-top: 4rem;
+            border-top: 1px solid var(--card-border);
             position: relative;
-            display: inline-block;
-            padding: 8px 20px;
-            border-radius: 50px;
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(10px);
-            margin-bottom: 15px;
-            max-width: 90%;
-            word-break: break-word;
-        }
-
-        .footer p {
-            padding: 0 10px;
-            font-size: clamp(0.9rem, 3vw, 1.1rem);
-        }
-
-        /* Achievement Badge - Mobile optimized */
-        .achievement-badge {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            background: linear-gradient(135deg, #0fce7c, #6a11cb);
-            color: white;
-            padding: 25px 20px;
-            border-radius: 20px;
             text-align: center;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-            z-index: 10000;
-            transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            width: 90%;
-            max-width: 350px;
-            backdrop-filter: blur(20px);
-            border: 2px solid rgba(255, 255, 255, 0.2);
         }
-
-        .badge-icon {
-            font-size: clamp(2.5rem, 8vw, 4rem);
-            margin-bottom: 15px;
-        }
-
-        .achievement-badge h3 {
-            font-size: clamp(1.2rem, 4vw, 1.8rem);
-            margin-bottom: 10px;
-        }
-
-        .achievement-badge p {
-            font-size: clamp(0.9rem, 3.5vw, 1.1rem);
-        }
-
-        /* Loading Overlay - Mobile optimized */
-        .loading-overlay {
-            position: fixed;
+        
+        .site-footer::before {
+            content: '';
+            position: absolute;
             top: 0;
-            left: 0;
+            right: 0;
             width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
-            display: flex;
-            justify-content: center;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        .footer-motivation {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 1rem;
+        }
+        
+        .footer-motivation i {
+            color: var(--accent-color);
+            margin-left: 5px;
+        }
+        
+        .footer-copyright {
+            font-size: 1rem;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+        }
+        
+        .footer-copyright a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-copyright a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+        
+        /* تحسينات للهواتف */
+        @media (max-width: 768px) {
+            .team-members {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .member-card {
+                width: 100%;
+                max-width: 320px;
+            }
+            
+            .motivation-section {
+                padding: 1.8rem;
+                margin: 1rem;
+            }
+            
+            .week-content {
+                padding: 1.5rem;
+            }
+            
+            .content-item {
+                padding: 1.2rem;
+            }
+            
+            .video-list {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                gap: 10px;
+            }
+            
+            .progress-section, .week-card {
+                margin: 1rem;
+            }
+            
+            .site-footer {
+                padding: 2rem 1rem 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .video-list {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            }
+            
+            .video-number {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+            }
+        }
+        
+        /* تأثيرات النص */
+        .highlight {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+        
+        .glow-text {
+            text-shadow: 0 0 10px rgba(109, 40, 217, 0.5);
+        }
+        
+        /* تخصيص زر collapse */
+        .week-header .fa-chevron-down {
+            transition: var(--transition);
+        }
+        
+        .week-header[aria-expanded="true"] .fa-chevron-down {
+            transform: rotate(180deg);
+        }
+        
+        /* تخصيص scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(30, 41, 59, 0.5);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(to bottom, var(--primary-light), var(--secondary-color));
+        }
+        
+        /* تأثيرات دخول العناصر */
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        
+        /* تصميم الأيقونات */
+        .icon-box {
+            display: inline-flex;
             align-items: center;
-            z-index: 99999;
-            transition: opacity 0.6s ease;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 12px;
+            margin-left: 15px;
+            box-shadow: 0 6px 15px rgba(109, 40, 217, 0.3);
         }
-
-        .loading-content {
-            text-align: center;
+        
+        .icon-box i {
             color: white;
-            padding: 20px;
-            width: 90%;
-            max-width: 300px;
+            font-size: 1.5rem;
         }
-
-        .loading-spinner {
-            width: 60px;
-            height: 60px;
-            border: 6px solid rgba(255, 255, 255, 0.1);
-            border-top: 6px solid var(--accent);
-            border-radius: 50%;
-            animation: spin 1.5s linear infinite;
-            margin: 0 auto 20px;
+        
+        /* تحسين العناوين الرئيسية */
+        .main-title {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1rem;
         }
-
-        .loading-content h3 {
-            font-size: clamp(1.2rem, 4vw, 1.8rem);
-            margin-bottom: 10px;
+        
+        .main-title h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
         }
-
-        .loading-content p {
-            font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+        
+        .main-title p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
         }
-
-
-   
     </style>
 </head>
 <body>
-    <!-- Floating Background -->
-    <div class="floating-bg">
-        <div class="floating-element"></div>
-        <div class="floating-element"></div>
+    <!-- العنوان الرئيسي -->
+    <div class="main-title fade-in">
+        <h1 class="glow-text">BrightMinds - Problem Solving Track</h1>
+        <p>مسار تعليمي متكامل لتعلم أساسيات حل المشكلات البرمجية والاستعداد للمسابقات البرمجية</p>
     </div>
-
-    <!-- Loading Overlay -->
-    <div class="loading-overlay" id="loadingOverlay">
-        <div class="loading-content">
-            <div class="loading-spinner"></div>
-            <h3>BrightMinds Team</h3>
-            <p>جاري تحضير تجربة التعلم المميزة...</p>
-        </div>
-    </div>
-
-    <!-- Achievement Badge -->
-    <div class="achievement-badge" id="achievementBadge">
-        <div class="badge-icon">
-            <i class="fas fa-trophy"></i>
-        </div>
-        <h3 id="badgeTitle">إنجاز رائع!</h3>
-        <p id="badgeMessage">لقد أتممت جزءًا جديدًا من المحتوى</p>
-    </div>
-
-    <!-- Celebration -->
-    <div class="celebration" id="celebration"></div>
-
-    <!-- Header Section -->
-    <header class="main-header">
-        <div class="container">
-            <div class="text-center">
-                <h1 class="team-name">BrightMinds</h1>
-                <p class="team-track">Problem Solving Track</p>
+    
+    <!-- قسم التحفيز -->
+    <div class="motivation-section fade-in delay-1">
+        <div class="row">
+            <div class="col-lg-9">
+                <h2 class="mb-3 glow-text">🚀 رحلة فريق BrightMinds في عالم Problem Solving</h2>
+                <p class="mb-3" style="font-size: 1.1rem;">معاً في هذا المسار التعليمي المتكامل، سنتعلم أساسيات حل المشكلات البرمجية خطوة بخطوة، من المفاهيم الأساسية إلى المستويات المتقدمة. التزامنا واستمرارنا سيوصلنا لمستويات عالمية إن شاء الله.</p>
                 
-                <div class="team-members">
-                    <div class="member-card">
-                        <i class="fas fa-user member-icon"></i>
-                        حسام محمود
-                    </div>
-                    <div class="member-card">
-                        <i class="fas fa-user member-icon"></i>
-                        الآء عماد
-                    </div>
-                    <div class="member-card">
-                        <i class="fas fa-user member-icon"></i>
-                        علا حسام
-                    </div>
-                    <div class="member-card">
-                        <i class="fas fa-user member-icon"></i>
-                        إسلام حاتم
-                    </div>
+                <div class="motivational-quote">
+                    "النجاح ليس صدفة، إنه عمل شاق، مثابرة، تعلم، دراسة، تضحية، والأهم من ذلك، <span class="highlight">حب ما تفعله أو تتعلمه</span>"
+                </div>
+                
+            </div>
+            <div class="col-lg-3 text-center d-flex align-items-center justify-content-center">
+                <div class="icon-box">
+                    <i class="fas fa-users"></i>
                 </div>
             </div>
         </div>
-    </header>
-
-    <!-- Progress Section -->
-    <div class="container">
+        
+        <!-- أعضاء الفريق - أسماء فقط -->
+        <div class="team-members fade-in delay-2">
+            <div class="member-card">
+               
+                <h3 class="member-name">حسام محمود</h3>
+            </div>
+            <div class="member-card">
+          
+                <h3 class="member-name">الاء عماد</h3>
+            </div>
+            <div class="member-card">
+              
+                <h3 class="member-name">علا حسام</h3>
+            </div>
+            <div class="member-card">
+               
+                <h3 class="member-name">اسلام حاتم</h3>
+            </div>
+        </div>
+    </div>
+    
+    <!-- قسم التقدم -->
+    <div class="progress-section fade-in delay-2">
+        <div class="row">
+            <div class="col-lg-9">
+                <h3 class="mb-3">📊 تقدمك في المسار التعليمي</h3>
+                <p>تابع تقدمك في استيعاب محتوى المسار. كل ما تكمل عناصر أكثر، يزيد تقدمك! البيانات تحفظ تلقائياً ولا يتم مسحها إلا إذا مسحت بيانات المتصفح.</p>
+            </div>
+            <div class="col-lg-3 text-center d-flex align-items-center justify-content-center">
+                <div class="icon-box">
+                    <i class="fas fa-trophy"></i>
+                </div>
+            </div>
+        </div>
+        
         <div class="progress-container">
-            <div class="progress-circle">
-                <svg viewBox="0 0 220 220">
-                    <defs>
-                        <linearGradient id="progress-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%" stop-color="#0fce7c" />
-                            <stop offset="100%" stop-color="#6a11cb" />
-                        </linearGradient>
-                    </defs>
-                    <circle class="circle-bg" cx="110" cy="110" r="100"></circle>
-                    <circle class="circle-progress" cx="110" cy="110" r="100" id="progressCircle"></circle>
-                </svg>
-                <div class="progress-text" id="progressPercent">0%</div>
+            <div class="d-flex justify-content-between mb-2">
+                <span>تقدمك العام</span>
+                <span id="progressPercentage" class="highlight">0%</span>
             </div>
-            <div class="text-center">
-                <h3 class="mb-2">تقدم الأسبوع الأول</h3>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 0%"></div>
             </div>
-        </div>
-    </div>
-
-    <!-- Motivation Section -->
-    <div class="container">
-        <div class="motivation-container">
-            <div>
-                <p class="motivation-quote" id="motivationText">"التميز في البرمجة يأتي من الإصرار والممارسة. فريق BrightMinds يمثل قوة التعلم الجماعي، حيث يصبح إنجاز الفرد إنجازًا للجميع"</p>
-                <p class="motivation-author">- فريق BrightMinds</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Main Collapse Section -->
-    <div class="container">
-        <div class="main-collapse">
-            <!-- Collapse Header -->
-            <div class="collapse-header" id="mainCollapseHeader">
-                <div class="collapse-title">
-                    <i class="fas fa-graduation-cap"></i>
-                    الأسبوع الأول - محتوى التعلم والفيديوهات
-                </div>
-                <div class="collapse-icon">
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-            </div>
-
-            <!-- Collapse Content -->
-            <div class="collapse-content" id="mainCollapseContent">
-                <!-- Week Content Section -->
-                <div class="week-content-section">
-                    <h3 class="section-title">
-                        <i class="fas fa-book-open"></i>
-                        محتوى الأسبوع الأول
-                    </h3>
-                    
-                    <div class="topics-grid" id="topicsGrid">
-                        <!-- Topics will be loaded here dynamically -->
+            <div class="mt-3 text-center" id="progressText" style="font-size: 1.1rem;">لم تبدأ بعد، ابدأ بالتعلم الآن! 💪</div>
+            
+            <div class="row mt-4">
+                <div class="col-md-4 text-center">
+                    <div class="p-3 rounded" style="background: rgba(255,255,255,0.05);">
+                        <h5 id="completedCount" class="mb-0">0</h5>
+                        <small>مكتمل</small>
                     </div>
                 </div>
-
-                <!-- Videos Section -->
-                <div class="videos-section">
-                    <h3 class="section-title">
-                        <i class="fas fa-video"></i>
-                        فيديوهات الأسبوع الأول
-                    </h3>
-                    
-                    <div class="videos-grid" id="videosGrid">
-                        <!-- Videos will be loaded here dynamically -->
+                <div class="col-md-4 text-center">
+                    <div class="p-3 rounded" style="background: rgba(255,255,255,0.05);">
+                        <h5 id="remainingCount" class="mb-0">0</h5>
+                        <small>متبقي</small>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="p-3 rounded" style="background: rgba(255,255,255,0.05);">
+                        <h5 id="totalCount" class="mb-0">0</h5>
+                        <small>إجمالي</small>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Footer -->
-    <footer class="footer">
+    
+    <!-- محتوى الأسبوع الأول فقط -->
+    <div class="week-card fade-in delay-3">
+        <div class="week-header" data-bs-toggle="collapse" data-bs-target="#week1">
+            <h3><i class="fas fa-calendar-week me-2"></i> الأسبوع الأول: المحتوى الكامل</h3>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        
+        <div class="collapse show" id="week1">
+            <div class="week-content">
+                <p class="mb-4" style="font-size: 1.1rem;">في هذا الأسبوع، سنتعرف على <span class="highlight">عقلية حل المشكلات</span> قبل كتابة أي كود، وأساسيات البرمجة بلغة C++، والمصفوفات والنصوص، مع مجموعة شاملة من الفيديوهات التعليمية.</p>
+                
+                <!-- قسم المرحلة 0 -->
+                <div class="content-item">
+                    <h5><span class="badge-custom">المرحلة 0</span> عقلية حل المشكلات (مهم قبل أي كود)</h5>
+                    <p class="mt-3">قبل كتابة أي سطر كود، يجب أن تفهم المسألة جيداً، تحلل المدخلات والمخرجات، تقرأ القيود (Constraints)، تفكر في أبسط حل ممكن (Brute Force)، ثم تحول الفكرة إلى كود.</p>
+                    
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item1" class="content-check" data-week="1" data-item="1">
+                        <label for="item1">فهم المسألة وتحديد المدخلات والمخرجات</label>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item2" class="content-check" data-week="1" data-item="2">
+                        <label for="item2">قراءة القيود (Constraints) وتحليلها</label>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item3" class="content-check" data-week="1" data-item="3">
+                        <label for="item3">التفكير في Brute Force وتحويل الفكرة لكود</label>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item4" class="content-check" data-week="1" data-item="4">
+                        <label for="item4">حل المسائل التدريبية للمرحلة 0</label>
+                    </div>
+                </div>
+                
+                <!-- قسم أساسيات C++ -->
+                <div class="content-item">
+                    <h5><span class="badge-custom">أساسيات C++</span> أنواع البيانات، الشروط، الحلقات والدوال</h5>
+                    <p class="mt-3">تعلم أساسيات لغة C++ الضرورية لحل المشكلات البرمجية، مع التركيز على المفاهيم المهمة مثل الفرق بين int و long long، ومتى نستخدم كل نوع.</p>
+                    
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item5" class="content-check" data-week="1" data-item="5">
+                        <label for="item5">أنواع البيانات: int, long long, float, char, bool</label>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item6" class="content-check" data-week="1" data-item="6">
+                        <label for="item6">الشروط: if/else, switch ومتى نستخدم كلٍ منها</label>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item7" class="content-check" data-week="1" data-item="7">
+                        <label for="item7">الحلقات: for, while, do when والفروقات بينها</label>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item8" class="content-check" data-week="1" data-item="8">
+                        <label for="item8">الدوال: تعريفها، معاملاتها، وقيم الإرجاع</label>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item9" class="content-check" data-week="1" data-item="9">
+                        <label for="item9">نطاق المتغيرات (Scope) وأنواع التمرير (Passing)</label>
+                    </div>
+                </div>
+                
+                <!-- قسم المصفوفات والنصوص -->
+                <div class="content-item">
+                    <h5><span class="badge-custom">المصفوفات والنصوص</span> هياكل البيانات الأساسية</h5>
+                    <p class="mt-3">تعلم كيفية التعامل مع المصفوفات (Arrays) والنصوص (Strings) في C++، بما في ذلك الفرق بين Array و Vector، ومعالجة النصوص، ومصفوفات التكرار.</p>
+                    
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item10" class="content-check" data-week="1" data-item="10">
+                        <label for="item10">الفرق بين Array و Vector في C++ ومتى نستخدم كل منهما</label>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item11" class="content-check" data-week="1" data-item="11">
+                        <label for="item11">الوصول والتعديل على عناصر المصفوفة</label>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item12" class="content-check" data-week="1" data-item="12">
+                        <label for="item12">معالجة النصوص: الطول، المقارنة، والتحويل</label>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item13" class="content-check" data-week="1" data-item="13">
+                        <label for="item13">مصفوفات التكرار (Frequency Arrays) وتطبيقاتها</label>
+                    </div>
+                </div>
+                
+                <!-- قسم الفيديوهات الجديد -->
+                <div class="content-item">
+                    <h5><span class="badge-custom">الفيديوهات التعليمية</span> جميع فيديوهات المسار (انقر على الرقم لمشاهدة الفيديو)</h5>
+                    <p class="mt-3">شاهد الفيديوهات بالترتيب للحصول على أفضل استفادة. انقر على رقم الفيديو لمشاهدته، ثم ضع علامة ✓ عندما تنتهي من مشاهدته.</p>
+                    
+                    <div class="video-list">
+                        <!-- سيتم إضافة الفيديوهات ديناميكياً عبر JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- قسم مسائل تدريب -->
+                <div class="content-item">
+                    <h5><span class="badge-custom">مسائل تدريبية</span> تطبيق المفاهيم على مسائل حقيقية</h5>
+                    <p class="mt-3">مسائل متنوعة لتطبيق ما تعلمته في المسار. حاول حل المسائل بنفسك قبل مشاهدة الحلول.</p>
+                    
+                    <div class="checklist-item">
+                        <input type="checkbox" id="problem1" class="content-check" data-week="1" data-item="37">
+                        <label for="problem1">Problem 1: Sum of Two Integers - جمع رقمين</label>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <input type="checkbox" id="problem2" class="content-check" data-week="1" data-item="38">
+                        <label for="problem2">Problem 2: Maximum of Three Numbers - أكبر ثلاثة أرقام</label>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <input type="checkbox" id="problem3" class="content-check" data-week="1" data-item="39">
+                        <label for="problem3">Problem 3: Sum of Even Numbers - مجموع الأرقام الزوجية</label>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <input type="checkbox" id="problem4" class="content-check" data-week="1" data-item="40">
+                        <label for="problem4">Problem 4: Modify the Value - تعديل القيمة</label>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <input type="checkbox" id="problem5" class="content-check" data-week="1" data-item="41">
+                        <label for="problem5">Problem 5: Find the Maximum Element - إيجاد أكبر عنصر</label>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <input type="checkbox" id="problem6" class="content-check" data-week="1" data-item="42">
+                        <label for="problem6">Problem 6: Count Character Frequency - عد تكرار الحروف</label>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <input type="checkbox" id="problem7" class="content-check" data-week="1" data-item="43">
+                        <label for="problem7">Problem 7: Reverse an Array - عكس المصفوفة</label>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <input type="checkbox" id="problem8" class="content-check" data-week="1" data-item="44">
+                        <label for="problem8">Problem 8: Check Palindrome String - التحقق من النص المتناظر</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- الفوتر الجديد -->
+    <footer class="site-footer fade-in delay-4">
         <div class="container">
-            <p class="mb-4">فريق واحد، هدف واحد، نجاح واحد</p>
-            <p class="developer">Developed by Eng. Hossam Mahmoud</p>
-            <small>© 2026 BrightMinds Team</small>
+            <div class="footer-motivation">
+                <i class="fas fa-quote-left"></i>
+                الاستمرارية والتعلم المستمر هما مفتاح النجاح في عالم البرمجة وحل المشكلات. لا تستعجل النتائج، فكل خطوة تخطوها تقربك أكثر من هدفك. تذكر أن الرحلة أهم من الوصول!
+                <i class="fas fa-quote-right"></i>
+            </div>
+            
+            <div class="footer-copyright">
+                <p>© 2026 BrightMinds Team - Problem Solving Track. جميع الحقوق محفوظة.</p>
+                <p>تم التطوير بهدف تعليمي وتدريبي لفريق BrightMinds</p>
+            </div>
         </div>
     </footer>
-
+    
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
     <script>
-        // DOM Elements
-        const loadingOverlay = document.getElementById('loadingOverlay');
-        const achievementBadge = document.getElementById('achievementBadge');
-        const badgeTitle = document.getElementById('badgeTitle');
-        const badgeMessage = document.getElementById('badgeMessage');
-        const celebration = document.getElementById('celebration');
-        const progressCircle = document.getElementById('progressCircle');
-        const progressPercent = document.getElementById('progressPercent');
-        const motivationText = document.getElementById('motivationText');
-        const mainCollapseHeader = document.getElementById('mainCollapseHeader');
-        const mainCollapseContent = document.getElementById('mainCollapseContent');
-        const topicsGrid = document.getElementById('topicsGrid');
-        const videosGrid = document.getElementById('videosGrid');
-
-        // Configuration
-        const totalItems = 45; // 9 topics + 36 videos
-        let completedItems = 0;
-
-        // Video URLs from the provided links
-        const videoUrls = [
-            "https://youtu.be/haXXcI17WM4",
-            "https://youtu.be/FVV4kTy0dJg",
-            "https://youtu.be/1K1sET8dDrI",
-            "https://youtu.be/NeHu899_uYA",
-            "https://youtu.be/6UoFcvARKI4",
-            "https://youtu.be/cS0tbixHmdI",
-            "https://youtu.be/7hM-MBheZ-w",
-            "https://youtu.be/MrwqesK64aU",
-            "https://youtu.be/AQyni1r43T0",
-            "https://youtu.be/nCO0KZ67b1Q",
-            "https://youtu.be/xpznDlbgQPM",
-            "https://youtu.be/41v0w8BjJms",
-            "https://youtu.be/BIQplCgmB2o",
-            "https://youtu.be/J_vnlD5Ca-U",
-            "https://youtu.be/NWP1cTeDFVY",
-            "https://youtu.be/4DkdiXp5rYw",
-            "https://youtu.be/4v5hDgUDK9Q",
-            "https://youtu.be/2pG43LVr_Sw",
-            "https://youtu.be/dNCryC9CzQQ",
-            "https://youtu.be/lylQR-hFV-M",
-            "https://youtu.be/Ne7RthIdaok",
-            "https://youtu.be/PJeNjjQcrG8",
-            "https://youtu.be/p0pCO7gPfmQ",
-            "https://youtu.be/djgs6PnNl2w",
-            "https://youtu.be/55MRxgVOkMo",
-            "https://youtu.be/OIJsJrNJKUc",
-            "https://youtu.be/QSmQylbugAg",
-            "https://youtu.be/JrPhJtFuwqU",
-            "https://youtu.be/_RE-naCqphE",
-            "https://youtu.be/DgJqgq5Is0Y",
-            "https://youtu.be/RoKGZi4ArFo",
-            "https://youtu.be/Qm14ePexV10",
-            "https://youtu.be/s6sb23dglxs",
-            "https://youtu.be/9ALw6qoCvk8",
-            "https://youtu.be/9ZE8HAHyp4I",
-            "https://youtu.be/Mlo7_fUG4N0"
+        // قائمة الفيديوهات
+        const videoLinks = [
+            "https://youtu.be/haXXcI17WM4?si=LbmsH4ycf9fHwNeb",
+            "https://youtu.be/FVV4kTy0dJg?si=rd-1bjS2TFyihpEq",
+            "https://youtu.be/1K1sET8dDrI?si=AHTKogBhlJI5WNDz",
+            "https://youtu.be/NeHu899_uYA?si=ZJW1g6yZPV32OaXL",
+            "https://youtu.be/6UoFcvARKI4?si=gsgSQt-Wlrst9FcP",
+            "https://youtu.be/cS0tbixHmdI?si=KdRRtCpjK8oADZZX",
+            "https://youtu.be/7hM-MBheZ-w?si=O816dU1cKWvfQATO",
+            "https://youtu.be/MrwqesK64aU?si=X-uKiVoYwvrgpbB-",
+            "https://youtu.be/AQyni1r43T0?si=EhbNTxxwt8aeq5nd",
+            "https://youtu.be/nCO0KZ67b1Q?si=bMIXhn6qwc1Xc0CP",
+            "https://youtu.be/xpznDlbgQPM?si=ix22c44t6Gg53lHn",
+            "https://youtu.be/41v0w8BjJms?si=kgraZQhjVXCbmci-",
+            "https://youtu.be/BIQplCgmB2o?si=-ngJk1M368WbMEem",
+            "https://youtu.be/J_vnlD5Ca-U?si=DoqtyYS7xnPFeNYv",
+            "https://youtu.be/NWP1cTeDFVY?si=6FwXJFHkCmW8Fscs",
+            "https://youtu.be/4DkdiXp5rYw?si=Nw80qc-OE4QK26uS",
+            "https://youtu.be/4v5hDgUDK9Q?si=uHeM68MGm-LMQdW0",
+            "https://youtu.be/2pG43LVr_Sw?si=5rhWejuKOySPJcXF",
+            "https://youtu.be/dNCryC9CzQQ?si=p9V7X8Ymj7gpA_IA",
+            "https://youtu.be/lylQR-hFV-M?si=JARYBLXe9PIlg68r",
+            "https://youtu.be/Ne7RthIdaok?si=iKt4-iPTx1OJcWOm",
+            "https://youtu.be/PJeNjjQcrG8?si=_OmEW5m3Pc7hyrB6",
+            "https://youtu.be/p0pCO7gPfmQ?si=vu87OJU8E8rDhvmp",
+            "https://youtu.be/djgs6PnNl2w?si=2fLrZ0Z7jYZl4Mf_",
+            "https://youtu.be/55MRxgVOkMo?si=sJKk_-Y-TiUNruKa",
+            "https://youtu.be/OIJsJrNJKUc?si=hO5z_E1_OWOuTomP",
+            "https://youtu.be/QSmQylbugAg?si=HWZS8RRB6bToXAgX",
+            "https://youtu.be/JrPhJtFuwqU?si=9cRN9d7BpjQ6hf-u",
+            "https://youtu.be/_RE-naCqphE?si=HE5hD89CkOXf4Pb6",
+            "https://youtu.be/DgJqgq5Is0Y?si=eiTc2YBHtV2KhR4y",
+            "https://youtu.be/RoKGZi4ArFo?si=HYkoK5NzRyysYSvq",
+            "https://youtu.be/Qm14ePexV10?si=Nt_k4wdLzEBLcILo",
+            "https://youtu.be/s6sb23dglxs?si=UDXqg1TqLdpzC_Hb",
+            "https://youtu.be/9ALw6qoCvk8?si=vs23vaMJ5vEM4Fx4",
+            "https://youtu.be/9ZE8HAHyp4I?si=Oj-MVx7lgLIoXAPD",
+            "https://youtu.be/Mlo7_fUG4N0?si=-5eIF5yoYetNLjOl"
         ];
-
-        // Topics data
-        const topics = [
-            { id: 1, title: "عقلية الـ Problem Solving - الأساس الذهني قبل البرمجة", icon: "fa-brain" },
-            { id: 2, title: "الخطوات المنهجية لحل المسائل البرمجية", icon: "fa-road" },
-            { id: 3, title: "أساسيات لغة C++ للـ Problem Solving", icon: "fa-code" },
-            { id: 4, title: "أنواع البيانات والمتغيرات (Data Types & Variables)", icon: "fa-shapes" },
-            { id: 5, title: "الشروط والتفرع (Conditional Statements)", icon: "fa-code-branch" },
-            { id: 6, title: "الحلقات التكرارية (Loops)", icon: "fa-redo" },
-            { id: 7, title: "المصفوفات والـ Vectors (Arrays & Vectors)", icon: "fa-cubes" },
-            { id: 8, title: "التعامل مع النصوص (Strings)", icon: "fa-font" },
-            { id: 9, title: "الدوال ووحدات البرمجة (Functions)", icon: "fa-function" }
-        ];
-
-        // Improved motivational messages (10 different ones)
-        const motivationalMessages = [
-            "كل تحدي تواجهه في البرمجة هو فرصة لتطوير مهاراتك. مع فريق BrightMinds، أنت لست وحدك في هذه الرحلة",
-            "الإتقان يأتي من التكرار والممارسة. كل خطوة تتقدمها مع BrightMinds تقربك من احتراف حل المشكلات",
-            "البرمجة ليست مجرد كتابة كود، بل هي طريقة تفكير. مع BrightMinds تتعلم كيف تفكر كمبرمج محترف",
-            "كل فيديو تشاهده وكل تمرين تحله يبني مستقبلك البرمجي. استمر، فالفريق معك في كل خطوة",
-            "التعلم المستمر هو سر التميز في البرمجة. BrightMinds يوفر لك البيئة المثالية للتعلم والنمو",
-            "قوة الفريق تكمن في دعم أفراده لبعض. في BrightMinds، كل عضو هو داعم وشريك في النجاح",
-            "المشاكل البرمجية ليست عقبات، بل فرص للتعلم. مع BrightMinds تتعلم تحويل التحديات إلى إنجازات",
-            "الطريق إلى الإتقان يبدأ بخطوة، واستمرارية الخطوات تصل بك للهدف. BrightMinds معك من البداية للنهاية",
-            "في عالم البرمجة السريع، التعلم الجماعي يضمن لك البقاء في الصدارة. BrightMinds هو بوابتك للتميز"
-        ];
-
-        // Load topics dynamically
-        function loadTopics() {
-            topics.forEach(topic => {
-                const topicCard = document.createElement('div');
-                topicCard.className = 'topic-card';
-                topicCard.dataset.topicId = topic.id;
-                topicCard.innerHTML = `
-                    <div class="topic-header">
-                        <div class="topic-number">${topic.id}</div>
-                        <h4 class="topic-title">${topic.title}</h4>
-                    </div>
-                    <div class="topic-status">
-                        <div class="status-indicator">
-                            <i class="far fa-circle"></i>
-                            <span>انقر لتحديد الإكمال</span>
+        
+        $(document).ready(function() {
+            // إنشاء عناصر الفيديوهات
+            createVideoItems();
+            
+            // تحميل حالة العناصر المكتملة من localStorage
+            loadProgress();
+            
+            // تحديث شريط التقدم
+            updateProgressBar();
+            
+            // تحديث حالة العنصر عند التحديد
+            $('.content-check').change(function() {
+                const week = $(this).data('week');
+                const item = $(this).data('item');
+                const isChecked = $(this).is(':checked');
+                
+                // حفظ الحالة في localStorage
+                localStorage.setItem(`week${week}_item${item}`, isChecked);
+                
+                // تحديث تسمية العنصر
+                const label = $(this).next('label');
+                if (isChecked) {
+                    label.addClass('completed');
+                    // تأثير بسيط عند الإكمال
+                    $(this).parent().css('background', 'rgba(16, 185, 129, 0.1)');
+                    $(this).parent().css('border-color', 'rgba(16, 185, 129, 0.3)');
+                } else {
+                    label.removeClass('completed');
+                    $(this).parent().css('background', '');
+                    $(this).parent().css('border-color', '');
+                }
+                
+                // تحديث شريط التقدم
+                updateProgressBar();
+            });
+            
+            // تحميل التقدم من localStorage
+            function loadProgress() {
+                $('.content-check').each(function() {
+                    const week = $(this).data('week');
+                    const item = $(this).data('item');
+                    const isChecked = localStorage.getItem(`week${week}_item${item}`) === 'true';
+                    
+                    if (isChecked) {
+                        $(this).prop('checked', true);
+                        $(this).next('label').addClass('completed');
+                        $(this).parent().css('background', 'rgba(16, 185, 129, 0.1)');
+                        $(this).parent().css('border-color', 'rgba(16, 185, 129, 0.3)');
+                    }
+                });
+                
+                // تحميل حالة الفيديوهات
+                for (let i = 0; i < videoLinks.length; i++) {
+                    const isChecked = localStorage.getItem(`video_${i}`) === 'true';
+                    if (isChecked) {
+                        $(`#video-check-${i}`).prop('checked', true);
+                        $(`#video-label-${i}`).addClass('video-completed');
+                    }
+                }
+            }
+            
+            // إنشاء عناصر الفيديوهات
+            function createVideoItems() {
+                const videoList = $('.video-list');
+                videoList.empty();
+                
+                for (let i = 0; i < videoLinks.length; i++) {
+                    const videoItem = `
+                        <div class="video-item">
+                            <div class="video-number" data-video-index="${i}">
+                                ${i+1}
+                            </div>
+                            <div class="video-checkbox">
+                                <input type="checkbox" id="video-check-${i}" class="video-check" data-video-index="${i}">
+                                <label for="video-check-${i}" id="video-label-${i}">تم المشاهدة</label>
+                            </div>
                         </div>
-                    </div>
-                `;
-                topicsGrid.appendChild(topicCard);
-            });
-        }
-
-        // Load videos dynamically
-        function loadVideos() {
-            for (let i = 1; i <= 36; i++) {
-                const videoCard = document.createElement('div');
-                videoCard.className = 'video-card';
-                videoCard.dataset.videoId = i;
-                videoCard.innerHTML = `
-                    <div class="video-number">${i}</div>
-                    <div class="video-actions">
-                        <button class="video-btn watch" data-video-id="${i}">
-                            <i class="fas fa-play"></i>
-                            مشاهدة
-                        </button>
-                        <button class="video-btn mark" data-video-id="${i}">
-                            <i class="far fa-circle"></i>
-                            تحديد
-                        </button>
-                    </div>
-                `;
-                videosGrid.appendChild(videoCard);
-            }
-        }
-
-        // Update progress
-        function updateProgress() {
-            const progress = Math.round((completedItems / totalItems) * 100);
-            progressPercent.textContent = `${progress}%`;
-            
-            // Update circle progress
-            const circumference = 628; // 2 * π * 100
-            const offset = circumference - (progress / 100) * circumference;
-            progressCircle.style.strokeDashoffset = offset;
-            
-            // Save progress
-            saveProgress();
-            
-            // Check for achievements
-            checkAchievements();
-        }
-
-        // Save progress to localStorage
-        function saveProgress() {
-            const progressData = {
-                completedItems: completedItems,
-                lastUpdated: new Date().toISOString()
-            };
-            
-            // Save topics status
-            topics.forEach(topic => {
-                const card = document.querySelector(`[data-topic-id="${topic.id}"]`);
-                if (card) {
-                    progressData[`topic${topic.id}`] = card.classList.contains('completed');
+                    `;
+                    videoList.append(videoItem);
                 }
-            });
-            
-            // Save videos status
-            for (let i = 1; i <= 36; i++) {
-                const videoCard = document.querySelector(`[data-video-id="${i}"]`);
-                if (videoCard) {
-                    progressData[`video${i}`] = videoCard.classList.contains('watched');
-                }
-            }
-            
-            try {
-                localStorage.setItem('brightmindsProgress', JSON.stringify(progressData));
-            } catch (e) {
-                console.log('Storage not available:', e.message);
-            }
-        }
-
-        // Load progress from localStorage
-        function loadProgress() {
-            try {
-                const savedProgress = localStorage.getItem('brightmindsProgress');
-                if (savedProgress) {
-                    const progressData = JSON.parse(savedProgress);
+                
+                // إضافة حدث النقر على أرقام الفيديوهات
+                $('.video-number').click(function() {
+                    const videoIndex = $(this).data('video-index');
+                    window.open(videoLinks[videoIndex], '_blank');
+                });
+                
+                // إضافة حدث للتحديد على خانات الفيديوهات
+                $('.video-check').change(function() {
+                    const videoIndex = $(this).data('video-index');
+                    const isChecked = $(this).is(':checked');
                     
-                    // Load topics progress
-                    topics.forEach(topic => {
-                        const card = document.querySelector(`[data-topic-id="${topic.id}"]`);
-                        if (card && progressData[`topic${topic.id}`]) {
-                            card.classList.add('completed');
-                            card.querySelector('.status-indicator').innerHTML = 
-                                '<i class="fas fa-check-circle"></i><span>مكتمل - انقر لإلغاء</span>';
-                            completedItems++;
-                        }
-                    });
+                    // حفظ الحالة في localStorage
+                    localStorage.setItem(`video_${videoIndex}`, isChecked);
                     
-                    // Load videos progress
-                    for (let i = 1; i <= 36; i++) {
-                        const videoCard = document.querySelector(`[data-video-id="${i}"]`);
-                        if (videoCard && progressData[`video${i}`]) {
-                            videoCard.classList.add('watched');
-                            const markBtn = videoCard.querySelector('.mark');
-                            markBtn.innerHTML = '<i class="fas fa-check-circle"></i>إلغاء';
-                            markBtn.classList.add('watched');
-                            completedItems++;
-                        }
+                    // تحديث التسمية
+                    const label = $(`#video-label-${videoIndex}`);
+                    if (isChecked) {
+                        label.addClass('video-completed');
+                    } else {
+                        label.removeClass('video-completed');
                     }
                     
-                    updateProgress();
-                }
-            } catch (e) {
-                console.log('Error loading progress:', e.message);
+                    // تحديث شريط التقدم
+                    updateProgressBar();
+                });
             }
-        }
-
-        // Update motivational message
-        function updateMotivationalMessage() {
-            const randomIndex = Math.floor(Math.random() * motivationalMessages.length);
-            motivationText.textContent = `"${motivationalMessages[randomIndex]}"`;
             
-            // Add fade animation
-            motivationText.style.animation = 'none';
-            setTimeout(() => {
-                motivationText.style.animation = 'fadeIn 1s ease';
-            }, 10);
-        }
-
-        // Show achievement badge
-        function showAchievement(title, message) {
-            badgeTitle.textContent = title;
-            badgeMessage.textContent = message;
-            achievementBadge.style.transform = 'translate(-50%, -50%) scale(1)';
-            
-            setTimeout(() => {
-                achievementBadge.style.transform = 'translate(-50%, -50%) scale(0)';
-            }, 3000);
-        }
-
-        // Create celebration effect
-        function createCelebration() {
-            celebration.style.display = 'block';
-            celebration.innerHTML = '';
-            
-            // Create confetti
-            for (let i = 0; i < 100; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti';
-                confetti.style.left = Math.random() * 100 + 'vw';
-                confetti.style.background = getRandomGradient();
-                confetti.style.animationDelay = Math.random() * 3 + 's';
-                confetti.style.width = Math.random() * 10 + 5 + 'px';
-                confetti.style.height = confetti.style.width;
+            // تحديث شريط التقدم
+            function updateProgressBar() {
+                const totalItems = $('.content-check').length + $('.video-check').length;
+                const completedItems = $('.content-check:checked').length + $('.video-check:checked').length;
+                const remainingItems = totalItems - completedItems;
                 
-                celebration.appendChild(confetti);
+                let percentage = 0;
+                if (totalItems > 0) {
+                    percentage = Math.round((completedItems / totalItems) * 100);
+                }
                 
-                // Remove confetti after animation
-                setTimeout(() => {
-                    if (confetti.parentNode) {
-                        confetti.remove();
+                // تحديث شريط التقدم
+                $('#progressFill').css('width', percentage + '%');
+                $('#progressPercentage').text(percentage + '%');
+                
+                // تحديث الأرقام
+                $('#completedCount').text(completedItems);
+                $('#remainingCount').text(remainingItems);
+                $('#totalCount').text(totalItems);
+                
+                // تحديث النص التوضيحي
+                let progressText = '';
+                let emoji = '';
+                
+                if (percentage === 0) {
+                    progressText = 'لم تبدأ بعد، ابدأ بالتعلم الآن!';
+                    emoji = '💪';
+                } else if (percentage < 20) {
+                    progressText = 'بداية جيدة! استمر في التعلم.';
+                    emoji = '🚀';
+                } else if (percentage < 40) {
+                    progressText = 'تقدم ممتاز! أنت على الطريق الصحيح.';
+                    emoji = '🌟';
+                } else if (percentage < 60) {
+                    progressText = 'أداء رائع! أنت تقترب من منتصف الطريق.';
+                    emoji = '🔥';
+                } else if (percentage < 80) {
+                    progressText = 'مذهل! بضع خطوات فقط للانتهاء.';
+                    emoji = '⚡';
+                } else if (percentage < 100) {
+                    progressText = 'رائع! أنت على وشك الانتهاء.';
+                    emoji = '🎯';
+                } else {
+                    progressText = 'تهانينا! لقد أكملت جميع العناصر!';
+                    emoji = '🏆';
+                }
+                
+                $('#progressText').html(`${progressText} ${emoji}`);
+                
+                // حفظ النسبة المئوية الكلية
+                localStorage.setItem('overallProgress', percentage);
+            }
+            
+            // إضافة تأثير عند التمرير
+            $(window).scroll(function() {
+                const scrollPos = $(window).scrollTop();
+                $('.fade-in').each(function() {
+                    const elementTop = $(this).offset().top;
+                    const elementHeight = $(this).height();
+                    
+                    if (scrollPos > elementTop - 600 && scrollPos < elementTop + elementHeight - 200) {
+                        $(this).css('opacity', '1');
+                        $(this).css('transform', 'translateY(0)');
                     }
-                }, 3000);
-            }
-            
-            setTimeout(() => {
-                celebration.style.display = 'none';
-                celebration.innerHTML = '';
-            }, 3000);
-        }
-
-        // Get random gradient for confetti
-        function getRandomGradient() {
-            const gradients = [
-                'linear-gradient(135deg, #0fce7c, #0db46c)',
-                'linear-gradient(135deg, #6a11cb, #2575fc)',
-                'linear-gradient(135deg, #f093fb, #f5576c)',
-                'linear-gradient(135deg, #4facfe, #00f2fe)',
-                'linear-gradient(135deg, #f6d365, #fda085)'
-            ];
-            
-            return gradients[Math.floor(Math.random() * gradients.length)];
-        }
-
-        // Check for achievements
-        function checkAchievements() {
-            const progress = Math.round((completedItems / totalItems) * 100);
-            
-            if (progress >= 25 && progress < 50) {
-                showAchievement('بداية قوية! 🚀', 'أتممت 25% من المحتوى');
-            } else if (progress >= 50 && progress < 75) {
-                showAchievement('منتصف الطريق! ⭐', 'أتممت 50% من المحتوى');
-            } else if (progress >= 75 && progress < 100) {
-                showAchievement('على وشك النهاية! 🎯', 'أتممت 75% من المحتوى');
-            } else if (progress === 100) {
-                showAchievement('إنجاز مذهل! 🏆', 'تهانينا! أتممت الأسبوع الأول بنجاح');
-                createCelebration();
-            }
-        }
-
-        // Handle topic completion (toggle)
-        function handleTopicCompletion(card) {
-            const isCompleted = card.classList.contains('completed');
-            const indicator = card.querySelector('.status-indicator');
-            
-            if (!isCompleted) {
-                card.classList.add('completed');
-                indicator.innerHTML = '<i class="fas fa-check-circle"></i><span>مكتمل - انقر لإلغاء</span>';
-                completedItems++;
-            } else {
-                card.classList.remove('completed');
-                indicator.innerHTML = '<i class="far fa-circle"></i><span>انقر لتحديد الإكمال</span>';
-                completedItems--;
-            }
-            
-            updateProgress();
-        }
-
-        // Handle video watching
-        function handleVideoWatch(videoId) {
-            if (videoId >= 1 && videoId <= 36) {
-                window.open(videoUrls[videoId - 1], '_blank');
-            }
-        }
-
-        // Handle video marking (toggle)
-        function handleVideoMark(button) {
-            const videoId = button.dataset.videoId;
-            const videoCard = button.closest('.video-card');
-            const isWatched = videoCard.classList.contains('watched');
-            
-            if (!isWatched) {
-                videoCard.classList.add('watched');
-                button.innerHTML = '<i class="fas fa-check-circle"></i>إلغاء';
-                button.classList.add('watched');
-                completedItems++;
-            } else {
-                videoCard.classList.remove('watched');
-                button.innerHTML = '<i class="far fa-circle"></i>تحديد';
-                button.classList.remove('watched');
-                completedItems--;
-            }
-            
-            updateProgress();
-        }
-
-        // Handle collapse functionality
-        mainCollapseHeader.addEventListener('click', () => {
-            const isCollapsed = mainCollapseContent.classList.contains('show');
-            const icon = mainCollapseHeader.querySelector('.collapse-icon i');
-            
-            if (isCollapsed) {
-                mainCollapseContent.classList.remove('show');
-                icon.className = 'fas fa-chevron-down';
-            } else {
-                mainCollapseContent.classList.add('show');
-                icon.className = 'fas fa-chevron-up';
-            }
-        });
-
-        // Initialize
-        window.addEventListener('load', () => {
-            // Load content
-            loadTopics();
-            loadVideos();
-            
-            // Load saved progress
-            setTimeout(() => {
-                loadProgress();
-                
-                // Hide loading overlay
-                setTimeout(() => {
-                    loadingOverlay.style.opacity = '0';
-                    setTimeout(() => {
-                        loadingOverlay.style.display = 'none';
-                        
-                        // Open collapse by default
-                        mainCollapseContent.classList.add('show');
-                        mainCollapseHeader.querySelector('.collapse-icon i').className = 'fas fa-chevron-up';
-                        
-                        // Show initial motivational message
-                        updateMotivationalMessage();
-                        
-                        // Change motivational message every 5 seconds
-                        setInterval(updateMotivationalMessage, 5000);
-                    }, 300);
-                }, 1000);
-            }, 1000);
-            
-            // Event delegation for topics
-            topicsGrid.addEventListener('click', (e) => {
-                const card = e.target.closest('.topic-card');
-                if (card) {
-                    handleTopicCompletion(card);
-                }
+                });
             });
             
-            // Event delegation for videos
-            videosGrid.addEventListener('click', (e) => {
-                const target = e.target.closest('.video-btn');
-                if (!target) return;
-                
-                const videoId = target.dataset.videoId;
-                
-                if (target.classList.contains('watch')) {
-                    handleVideoWatch(videoId);
-                } else if (target.classList.contains('mark')) {
-                    handleVideoMark(target);
-                }
-            });
+            // تهيئة تأثيرات العناصر
+            $('.fade-in').css('opacity', '0');
+            $('.fade-in').css('transform', 'translateY(20px)');
+            setTimeout(function() {
+                $(window).scroll();
+            }, 100);
+            
+            // تحسين تجربة الأجهزة المحمولة
+            if ($(window).width() < 768) {
+                $('.week-header').click(function() {
+                    $(this).find('i.fa-chevron-down').toggleClass('fa-rotate-180');
+                });
+            }
+            
+            // تحديث تلقائي للتقدم كل ثانية (للتأكد من المزامنة)
+            setInterval(updateProgressBar, 1000);
         });
-
-        // تحسين الأسكرول على الجوال
-        document.addEventListener('touchmove', function(e) {
-            // السماح بالأسكرول الطبيعي
-        }, { passive: true });
     </script>
 </body>
 </html>
