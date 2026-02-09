@@ -985,7 +985,7 @@
     <!-- العنوان الرئيسي -->
     <div class="main-title fade-in">
         <h1 class="glow-text">BrightMinds - Problem Solving Track</h1>
-        <p>مسار تعليمي متكامل لتعلم أساسيات حل المشكلات البرمجية والاستعداد للمسابقات البرمجية</p>
+        <p>مسار تعليمي متكامل لتعلم أساسيات حل المشكلات البرمجية وهياكل البيانات</p>
     </div>
     
     <!-- قسم التحفيز -->
@@ -1011,19 +1011,15 @@
         <!-- أعضاء الفريق - أسماء فقط -->
         <div class="team-members fade-in delay-2">
             <div class="member-card">
-           
                 <h3 class="member-name">حسام محمود</h3>
             </div>
             <div class="member-card">
-                
                 <h3 class="member-name">الاء عماد</h3>
             </div>
             <div class="member-card">
-              
                 <h3 class="member-name">علا حسام</h3>
             </div>
             <div class="member-card">
-               
                 <h3 class="member-name">اسلام حاتم</h3>
             </div>
         </div>
@@ -1076,14 +1072,14 @@
         </div>
     </div>
     
-    <!-- محتوى الأسبوع الأول فقط -->
-    <div class="week-card fade-in delay-3">
-        <div class="week-header" data-bs-toggle="collapse" data-bs-target="#week1">
+    <!-- محتوى الأسبوع الأول -->
+    <div class="week-card fade-in delay-3" id="week1">
+        <div class="week-header" data-bs-toggle="collapse" data-bs-target="#week1-content">
             <h3><i class="fas fa-calendar-week me-2"></i> الأسبوع الأول: المحتوى الكامل</h3>
             <i class="fas fa-chevron-down"></i>
         </div>
         
-        <div class="collapse show" id="week1">
+        <div class="collapse show" id="week1-content">
             <div class="week-content">
                 <p class="mb-4">في هذا الأسبوع، سنتعرف على <span class="highlight">عقلية حل المشكلات</span> قبل كتابة أي كود، وأساسيات البرمجة بلغة C++، والمصفوفات والنصوص، مع مجموعة شاملة من الفيديوهات التعليمية.</p>
                 
@@ -1093,23 +1089,23 @@
                     <p class="mt-3">قبل كتابة أي سطر كود، يجب أن تفهم المسألة جيداً، تحلل المدخلات والمخرجات، تقرأ القيود، تفكر في أبسط حل ممكن، ثم تحول الفكرة إلى كود.</p>
                     
                     <div class="checklist-item">
-                        <input type="checkbox" id="item1" class="content-check" data-week="1" data-item="1">
-                        <label for="item1">فهم المسألة وتحديد المدخلات والمخرجات</label>
+                        <input type="checkbox" id="w1_i1" class="content-check" data-week="1" data-item="1">
+                        <label for="w1_i1">فهم المسألة وتحديد المدخلات والمخرجات</label>
                     </div>
                     
                     <div class="checklist-item">
-                        <input type="checkbox" id="item2" class="content-check" data-week="1" data-item="2">
-                        <label for="item2">قراءة القيود وتحليلها</label>
+                        <input type="checkbox" id="w1_i2" class="content-check" data-week="1" data-item="2">
+                        <label for="w1_i2">قراءة القيود وتحليلها</label>
                     </div>
                     
                     <div class="checklist-item">
-                        <input type="checkbox" id="item3" class="content-check" data-week="1" data-item="3">
-                        <label for="item3">التفكير في Brute Force وتحويل الفكرة لكود</label>
+                        <input type="checkbox" id="w1_i3" class="content-check" data-week="1" data-item="3">
+                        <label for="w1_i3">التفكير في Brute Force وتحويل الفكرة لكود</label>
                     </div>
                     
                     <div class="checklist-item">
-                        <input type="checkbox" id="item4" class="content-check" data-week="1" data-item="4">
-                        <label for="item4">حل المسائل التدريبية للمرحلة 0</label>
+                        <input type="checkbox" id="w1_i4" class="content-check" data-week="1" data-item="4">
+                        <label for="w1_i4">حل المسائل التدريبية للمرحلة 0</label>
                     </div>
                 </div>
                 
@@ -1119,28 +1115,28 @@
                     <p class="mt-3">تعلم أساسيات لغة C++ الضرورية لحل المشكلات البرمجية.</p>
                     
                     <div class="checklist-item">
-                        <input type="checkbox" id="item5" class="content-check" data-week="1" data-item="5">
-                        <label for="item5">أنواع البيانات: int, long long, float, char, bool</label>
+                        <input type="checkbox" id="w1_i5" class="content-check" data-week="1" data-item="5">
+                        <label for="w1_i5">أنواع البيانات: int, long long, float, char, bool</label>
                     </div>
                     
                     <div class="checklist-item">
-                        <input type="checkbox" id="item6" class="content-check" data-week="1" data-item="6">
-                        <label for="item6">الشروط: if/else, switch ومتى نستخدم كلٍ منها</label>
+                        <input type="checkbox" id="w1_i6" class="content-check" data-week="1" data-item="6">
+                        <label for="w1_i6">الشروط: if/else, switch ومتى نستخدم كلٍ منها</label>
                     </div>
                     
                     <div class="checklist-item">
-                        <input type="checkbox" id="item7" class="content-check" data-week="1" data-item="7">
-                        <label for="item7">الحلقات: for, while, do when والفروقات بينها</label>
+                        <input type="checkbox" id="w1_i7" class="content-check" data-week="1" data-item="7">
+                        <label for="w1_i7">الحلقات: for, while, do when والفروقات بينها</label>
                     </div>
                     
                     <div class="checklist-item">
-                        <input type="checkbox" id="item8" class="content-check" data-week="1" data-item="8">
-                        <label for="item8">الدوال: تعريفها، معاملاتها، وقيم الإرجاع</label>
+                        <input type="checkbox" id="w1_i8" class="content-check" data-week="1" data-item="8">
+                        <label for="w1_i8">الدوال: تعريفها، معاملاتها، وقيم الإرجاع</label>
                     </div>
                     
                     <div class="checklist-item">
-                        <input type="checkbox" id="item9" class="content-check" data-week="1" data-item="9">
-                        <label for="item9">نطاق المتغيرات وأنواع التمرير</label>
+                        <input type="checkbox" id="w1_i9" class="content-check" data-week="1" data-item="9">
+                        <label for="w1_i9">نطاق المتغيرات وأنواع التمرير</label>
                     </div>
                 </div>
                 
@@ -1150,29 +1146,29 @@
                     <p class="mt-3">تعلم كيفية التعامل مع المصفوفات والنصوص في C++.</p>
                     
                     <div class="checklist-item">
-                        <input type="checkbox" id="item10" class="content-check" data-week="1" data-item="10">
-                        <label for="item10">الفرق بين Array و Vector في C++</label>
+                        <input type="checkbox" id="w1_i10" class="content-check" data-week="1" data-item="10">
+                        <label for="w1_i10">الفرق بين Array و Vector في C++</label>
                     </div>
                     
                     <div class="checklist-item">
-                        <input type="checkbox" id="item11" class="content-check" data-week="1" data-item="11">
-                        <label for="item11">الوصول والتعديل على عناصر المصفوفة</label>
+                        <input type="checkbox" id="w1_i11" class="content-check" data-week="1" data-item="11">
+                        <label for="w1_i11">الوصول والتعديل على عناصر المصفوفة</label>
                     </div>
                     
                     <div class="checklist-item">
-                        <input type="checkbox" id="item12" class="content-check" data-week="1" data-item="12">
-                        <label for="item12">معالجة النصوص: الطول، المقارنة، والتحويل</label>
+                        <input type="checkbox" id="w1_i12" class="content-check" data-week="1" data-item="12">
+                        <label for="w1_i12">معالجة النصوص: الطول، المقارنة، والتحويل</label>
                     </div>
                     
                     <div class="checklist-item">
-                        <input type="checkbox" id="item13" class="content-check" data-week="1" data-item="13">
-                        <label for="item13">مصفوفات التكرار وتطبيقاتها</label>
+                        <input type="checkbox" id="w1_i13" class="content-check" data-week="1" data-item="13">
+                        <label for="w1_i13">مصفوفات التكرار وتطبيقاتها</label>
                     </div>
                 </div>
                 
-                <!-- قسم الفيديوهات الجديد -->
+                <!-- قسم الفيديوهات الأسبوع الأول -->
                 <div class="content-item">
-                    <h5><span class="badge-custom">الفيديوهات التعليمية</span> جميع فيديوهات المسار (انقر على الرقم لمشاهدة الفيديو)</h5>
+                    <h5><span class="badge-custom">الفيديوهات التعليمية</span> الأسبوع الأول (انقر على الرقم لمشاهدة الفيديو)</h5>
                     <p class="mt-3">شاهد الفيديوهات بالترتيب للحصول على أفضل استفادة. انقر على رقم الفيديو لمشاهدته، ثم ضع علامة ✓ عندما تنتهي من مشاهدته.</p>
                     
                     <div class="video-list">
@@ -1186,43 +1182,151 @@
                     <p class="mt-3">مسائل متنوعة لتطبيق ما تعلمته في المسار.</p>
                     
                     <div class="checklist-item">
-                        <input type="checkbox" id="problem1" class="content-check" data-week="1" data-item="37">
-                        <label for="problem1">Problem 1: Sum of Two Integers</label>
+                        <input type="checkbox" id="w1_p1" class="content-check" data-week="1" data-item="14">
+                        <label for="w1_p1">Problem 1: Sum of Two Integers</label>
                     </div>
                     
                     <div class="checklist-item">
-                        <input type="checkbox" id="problem2" class="content-check" data-week="1" data-item="38">
-                        <label for="problem2">Problem 2: Maximum of Three Numbers</label>
+                        <input type="checkbox" id="w1_p2" class="content-check" data-week="1" data-item="15">
+                        <label for="w1_p2">Problem 2: Maximum of Three Numbers</label>
                     </div>
                     
                     <div class="checklist-item">
-                        <input type="checkbox" id="problem3" class="content-check" data-week="1" data-item="39">
-                        <label for="problem3">Problem 3: Sum of Even Numbers</label>
+                        <input type="checkbox" id="w1_p3" class="content-check" data-week="1" data-item="16">
+                        <label for="w1_p3">Problem 3: Sum of Even Numbers</label>
                     </div>
                     
                     <div class="checklist-item">
-                        <input type="checkbox" id="problem4" class="content-check" data-week="1" data-item="40">
-                        <label for="problem4">Problem 4: Modify the Value</label>
+                        <input type="checkbox" id="w1_p4" class="content-check" data-week="1" data-item="17">
+                        <label for="w1_p4">Problem 4: Modify the Value</label>
                     </div>
                     
                     <div class="checklist-item">
-                        <input type="checkbox" id="problem5" class="content-check" data-week="1" data-item="41">
-                        <label for="problem5">Problem 5: Find the Maximum Element</label>
+                        <input type="checkbox" id="w1_p5" class="content-check" data-week="1" data-item="18">
+                        <label for="w1_p5">Problem 5: Find the Maximum Element</label>
                     </div>
                     
                     <div class="checklist-item">
-                        <input type="checkbox" id="problem6" class="content-check" data-week="1" data-item="42">
-                        <label for="problem6">Problem 6: Count Character Frequency</label>
+                        <input type="checkbox" id="w1_p6" class="content-check" data-week="1" data-item="19">
+                        <label for="w1_p6">Problem 6: Count Character Frequency</label>
                     </div>
                     
                     <div class="checklist-item">
-                        <input type="checkbox" id="problem7" class="content-check" data-week="1" data-item="43">
-                        <label for="problem7">Problem 7: Reverse an Array</label>
+                        <input type="checkbox" id="w1_p7" class="content-check" data-week="1" data-item="20">
+                        <label for="w1_p7">Problem 7: Reverse an Array</label>
                     </div>
                     
                     <div class="checklist-item">
-                        <input type="checkbox" id="problem8" class="content-check" data-week="1" data-item="44">
-                        <label for="problem8">Problem 8: Check Palindrome String</label>
+                        <input type="checkbox" id="w1_p8" class="content-check" data-week="1" data-item="21">
+                        <label for="w1_p8">Problem 8: Check Palindrome String</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- محتوى الأسبوع الثاني (الجديد) -->
+    <div class="week-card fade-in delay-3" id="week2">
+        <div class="week-header" data-bs-toggle="collapse" data-bs-target="#week2-content">
+            <h3><i class="fas fa-layer-group me-2"></i> الأسبوع الثاني: هياكل البيانات الأساسية</h3>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        
+        <div class="collapse" id="week2-content">
+            <div class="week-content">
+                <p class="mb-4">في هذا الأسبوع، سنتعمق في <span class="highlight">هياكل البيانات</span> (Data Structures). سنتعلم الـ Linear Structures، حاويات STL، وأهمية Priority Queue و Heap.</p>
+                
+                <!-- هدف المرحلة -->
+                <div class="content-item" style="border-right-color: var(--accent-color);">
+                    <h5><i class="fas fa-bullseye me-2" style="color: var(--accent-color);"></i>هدف المرحلة</h5>
+                    <p class="mt-2">تعرف تختار الـ <strong>Data Structure الصح</strong> من أول نظرة.</p>
+                </div>
+
+                <!-- قسم Linear Structures -->
+                <div class="content-item">
+                    <h5><span class="badge-custom">1️⃣ Linear Structures</span> الهياكل الخطية</h5>
+                    <p class="mt-3">تعلم كيفية التعامل مع البيانات بشكل متسلسل: Stack, Queue, Deque.</p>
+                    
+                    <div class="checklist-item">
+                        <input type="checkbox" id="w2_i1" class="content-check" data-week="2" data-item="1">
+                        <label for="w2_i1">Stack (المكدس)</label>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <input type="checkbox" id="w2_i2" class="content-check" data-week="2" data-item="2">
+                        <label for="w2_i2">Queue (الطابور)</label>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <input type="checkbox" id="w2_i3" class="content-check" data-week="2" data-item="3">
+                        <label for="w2_i3">Deque (طابور ذو نهايتين)</label>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <input type="checkbox" id="w2_i4" class="content-check" data-week="2" data-item="4">
+                        <label for="w2_i4">Struct (الهياكل)</label>
+                    </div>
+                </div>
+                
+                <!-- قسم STL Containers -->
+                <div class="content-item">
+                    <h5><span class="badge-custom">2️⃣ STL Containers</span> حاويات المكتبة القياسية</h5>
+                    <p class="mt-3">أدوات قوية في C++ لإدارة البيانات بكفاءة عالية.</p>
+                    
+                    <div class="checklist-item">
+                        <input type="checkbox" id="w2_i5" class="content-check" data-week="2" data-item="5">
+                        <label for="w2_i5">STL Containers & Pair</label>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <input type="checkbox" id="w2_i6" class="content-check" data-week="2" data-item="6">
+                        <label for="w2_i6">STL Overview</label>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <input type="checkbox" id="w2_i7" class="content-check" data-week="2" data-item="7">
+                        <label for="w2_i7">Set (المجموعة)</label>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <input type="checkbox" id="w2_i8" class="content-check" data-week="2" data-item="8">
+                        <label for="w2_i8">Multiset (مجموعة القيم المكررة)</label>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <input type="checkbox" id="w2_i9" class="content-check" data-week="2" data-item="9">
+                        <label for="w2_i9">Map (الخريطة)</label>
+                    </div>
+                </div>
+                
+                <!-- قسم Priority Queue -->
+                <div class="content-item">
+                    <h5><span class="badge-custom">3️⃣ Priority Queue</span> قائمة الانتظار الأولوية</h5>
+                    <p class="mt-3">فهم الـ Heap وكيفية استخدام Priority Queue للحصول على القيمة الأكبر أو الأصغر بسرعة.</p>
+                    
+                    <div class="checklist-item">
+                        <input type="checkbox" id="w2_i10" class="content-check" data-week="2" data-item="10">
+                        <label for="w2_i10">Priority Queue</label>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <input type="checkbox" id="w2_i11" class="content-check" data-week="2" data-item="11">
+                        <label for="w2_i11">Heap (الكومة)</label>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <input type="checkbox" id="w2_i12" class="content-check" data-week="2" data-item="12">
+                        <label for="w2_i12">Min / Max Heap</label>
+                    </div>
+                </div>
+
+                <!-- قسم الفيديوهات الأسبوع الثاني -->
+                <div class="content-item">
+                    <h5><span class="badge-custom">الفيديوهات التعليمية</span> الأسبوع الثاني (انقر على الرقم لمشاهدة الفيديو)</h5>
+                    <p class="mt-3">شاهد الفيديوهات بالترتيب للحصول على أفضل استفادة.</p>
+                    
+                    <div class="video-list" id="week2-video-list">
+                        <!-- سيتم إضافة الفيديوهات ديناميكياً عبر JavaScript -->
                     </div>
                 </div>
             </div>
@@ -1239,7 +1343,7 @@
             </div>
             
             <div class="footer-copyright">
-                <p>© 2026 BrightMinds Team - Problem Solving Track. جميع الحقوق محفوظة.</p>
+                <p>© 2023 BrightMinds Team - Problem Solving Track. جميع الحقوق محفوظة.</p>
                 <p>تم التطوير بهدف تعليمي وتدريبي لفريق BrightMinds</p>
             </div>
         </div>
@@ -1252,8 +1356,8 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
     <script>
-        // قائمة الفيديوهات
-        const videoLinks = [
+        // قائمة الفيديوهات الأسبوع الأول
+        const week1VideoLinks = [
             "https://youtu.be/haXXcI17WM4?si=LbmsH4ycf9fHwNeb",
             "https://youtu.be/FVV4kTy0dJg?si=rd-1bjS2TFyihpEq",
             "https://youtu.be/1K1sET8dDrI?si=AHTKogBhlJI5WNDz",
@@ -1291,10 +1395,29 @@
             "https://youtu.be/9ZE8HAHyp4I?si=Oj-MVx7lgLIoXAPD",
             "https://youtu.be/Mlo7_fUG4N0?si=-5eIF5yoYetNLjOl"
         ];
+
+        // قائمة الفيديوهات الأسبوع الثاني
+        const week2VideoLinks = [
+            "https://youtu.be/rYMuP7e-8CM?si=UM5wuwEbHhzKtFYY", // Stack
+            "https://youtu.be/gCjeio-HpjU?si=5gwX8JyIip9JAebH", // Queue
+            "https://youtu.be/TTtuWb0lV1g?si=x9mICWJGD3ebCBS8", // Deque
+            "https://youtu.be/LOAmP5tK53w?si=_GRO00V654dCvr9I", // Struct
+            "https://youtu.be/VRFd42b6n-A?si=wFdxoQ6LYYZH1Rz7", // STL Containers
+            "https://youtu.be/w52Gn07cczA?si=ACI11BUQOQz5E0RM", // STL
+            "https://youtu.be/Yg7dpbXhhlY?si=Yat9P7C_kZwYHEt2", // Set
+            "https://youtu.be/dbNeuqgo_Aw?si=ekBYveT1mPYf5aXE", // Multiset
+            "https://youtu.be/YEtPvp_AUq8?si=BIEdCSVDMws5k2jL", // Map
+            "https://youtu.be/Kskxz4NS8kI?si=fJ3S2kLqqVx9nn9y", // Priority Queue
+            "https://youtu.be/8EBlw2Pn8gk?si=-8a7tv4kH9BOYwIC", // Heap
+            "https://youtu.be/xMqHU4hBdXE?si=NHTt9n32JTAN9TxN"  // Min / Max Heap
+        ];
         
         $(document).ready(function() {
-            // إنشاء عناصر الفيديوهات
-            createVideoItems();
+            // إنشاء عناصر الفيديوهات للأسبوع الأول
+            renderVideoList('#week1-content .video-list', week1VideoLinks, 'v1');
+            
+            // إنشاء عناصر الفيديوهات للأسبوع الثاني
+            renderVideoList('#week2-video-list', week2VideoLinks, 'v2');
             
             // تحميل حالة العناصر المكتملة من localStorage
             loadProgress();
@@ -1315,7 +1438,6 @@
                 const label = $(this).next('label');
                 if (isChecked) {
                     label.addClass('completed');
-                    // تأثير بسيط عند الإكمال
                     $(this).parent().css('background', 'rgba(16, 185, 129, 0.1)');
                     $(this).parent().css('border-color', 'rgba(16, 185, 129, 0.3)');
                 } else {
@@ -1327,171 +1449,173 @@
                 // تحديث شريط التقدم
                 updateProgressBar();
             });
+        });
+        
+        // دالة عامة لإنشاء قائمة الفيديوهات
+        function renderVideoList(containerSelector, links, prefix) {
+            const container = $(containerSelector);
+            container.empty();
             
-            // تحميل التقدم من localStorage
-            function loadProgress() {
-                $('.content-check').each(function() {
-                    const week = $(this).data('week');
-                    const item = $(this).data('item');
-                    const isChecked = localStorage.getItem(`week${week}_item${item}`) === 'true';
-                    
-                    if (isChecked) {
-                        $(this).prop('checked', true);
-                        $(this).next('label').addClass('completed');
-                        $(this).parent().css('background', 'rgba(16, 185, 129, 0.1)');
-                        $(this).parent().css('border-color', 'rgba(16, 185, 129, 0.3)');
-                    }
-                });
-                
-                // تحميل حالة الفيديوهات
-                for (let i = 0; i < videoLinks.length; i++) {
-                    const isChecked = localStorage.getItem(`video_${i}`) === 'true';
-                    if (isChecked) {
-                        $(`#video-check-${i}`).prop('checked', true);
-                        $(`#video-label-${i}`).addClass('video-completed');
-                    }
-                }
-            }
-            
-            // إنشاء عناصر الفيديوهات
-            function createVideoItems() {
-                const videoList = $('.video-list');
-                videoList.empty();
-                
-                for (let i = 0; i < videoLinks.length; i++) {
-                    const videoItem = `
-                        <div class="video-item">
-                            <div class="video-number" data-video-index="${i}">
-                                ${i+1}
-                            </div>
-                            <div class="video-checkbox">
-                                <input type="checkbox" id="video-check-${i}" class="video-check" data-video-index="${i}">
-                                <label for="video-check-${i}" id="video-label-${i}">تم</label>
-                            </div>
+            for (let i = 0; i < links.length; i++) {
+                const key = `${prefix}_${i}`;
+                const videoItem = `
+                    <div class="video-item">
+                        <div class="video-number" data-video-key="${key}" data-video-link="${links[i]}">
+                            ${i+1}
                         </div>
-                    `;
-                    videoList.append(videoItem);
-                }
-                
-                // إضافة حدث النقر على أرقام الفيديوهات
-                $('.video-number').click(function() {
-                    const videoIndex = $(this).data('video-index');
-                    window.open(videoLinks[videoIndex], '_blank');
-                });
-                
-                // إضافة حدث للتحديد على خانات الفيديوهات
-                $('.video-check').change(function() {
-                    const videoIndex = $(this).data('video-index');
-                    const isChecked = $(this).is(':checked');
-                    
-                    // حفظ الحالة في localStorage
-                    localStorage.setItem(`video_${videoIndex}`, isChecked);
-                    
-                    // تحديث التسمية
-                    const label = $(`#video-label-${videoIndex}`);
-                    if (isChecked) {
-                        label.addClass('video-completed');
-                    } else {
-                        label.removeClass('video-completed');
-                    }
-                    
-                    // تحديث شريط التقدم
-                    updateProgressBar();
-                });
+                        <div class="video-checkbox">
+                            <input type="checkbox" id="video-check-${key}" class="video-check" data-video-key="${key}">
+                            <label for="video-check-${key}" id="video-label-${key}">تم</label>
+                        </div>
+                    </div>
+                `;
+                container.append(videoItem);
             }
             
-            // تحديث شريط التقدم
-            function updateProgressBar() {
-                const totalItems = $('.content-check').length + $('.video-check').length;
-                const completedItems = $('.content-check:checked').length + $('.video-check:checked').length;
-                const remainingItems = totalItems - completedItems;
+            // إضافة حدث النقر على أرقام الفيديوهات
+            container.find('.video-number').click(function() {
+                const link = $(this).data('video-link');
+                window.open(link, '_blank');
+            });
+            
+            // إضافة حدث للتحديد على خانات الفيديوهات
+            container.find('.video-check').change(function() {
+                const key = $(this).data('video-key');
+                const isChecked = $(this).is(':checked');
                 
-                let percentage = 0;
-                if (totalItems > 0) {
-                    percentage = Math.round((completedItems / totalItems) * 100);
+                // حفظ الحالة في localStorage
+                localStorage.setItem(`video_${key}`, isChecked);
+                
+                // تحديث التسمية
+                const label = $(`#video-label-${key}`);
+                if (isChecked) {
+                    label.addClass('video-completed');
+                } else {
+                    label.removeClass('video-completed');
                 }
                 
                 // تحديث شريط التقدم
-                $('#progressFill').css('width', percentage + '%');
-                $('#progressPercentage').text(percentage + '%');
+                updateProgressBar();
+            });
+        }
+        
+        // تحميل التقدم من localStorage
+        function loadProgress() {
+            // تحميل حالات العناصر النصية (Checkboxes)
+            $('.content-check').each(function() {
+                const week = $(this).data('week');
+                const item = $(this).data('item');
+                const isChecked = localStorage.getItem(`week${week}_item${item}`) === 'true';
                 
-                // تحديث الأرقام
-                $('#completedCount').text(completedItems);
-                $('#remainingCount').text(remainingItems);
-                $('#totalCount').text(totalItems);
-                
-                // تحديث النص التوضيحي
-                let progressText = '';
-                let emoji = '';
-                
-                if (percentage === 0) {
-                    progressText = 'لم تبدأ بعد، ابدأ بالتعلم الآن!';
-                    emoji = '💪';
-                } else if (percentage < 20) {
-                    progressText = 'بداية جيدة! استمر في التعلم.';
-                    emoji = '🚀';
-                } else if (percentage < 40) {
-                    progressText = 'تقدم ممتاز! أنت على الطريق الصحيح.';
-                    emoji = '🌟';
-                } else if (percentage < 60) {
-                    progressText = 'أداء رائع! أنت تقترب من منتصف الطريق.';
-                    emoji = '🔥';
-                } else if (percentage < 80) {
-                    progressText = 'مذهل! بضع خطوات فقط للانتهاء.';
-                    emoji = '⚡';
-                } else if (percentage < 100) {
-                    progressText = 'رائع! أنت على وشك الانتهاء.';
-                    emoji = '🎯';
-                } else {
-                    progressText = 'تهانينا! لقد أكملت جميع العناصر!';
-                    emoji = '🏆';
+                if (isChecked) {
+                    $(this).prop('checked', true);
+                    $(this).next('label').addClass('completed');
+                    $(this).parent().css('background', 'rgba(16, 185, 129, 0.1)');
+                    $(this).parent().css('border-color', 'rgba(16, 185, 129, 0.3)');
                 }
-                
-                $('#progressText').html(`${progressText} ${emoji}`);
-                
-                // حفظ النسبة المئوية الكلية
-                localStorage.setItem('overallProgress', percentage);
-            }
-            
-            // إضافة تأثير عند التمرير
-            $(window).scroll(function() {
-                const scrollPos = $(window).scrollTop();
-                $('.fade-in').each(function() {
-                    const elementTop = $(this).offset().top;
-                    const elementHeight = $(this).height();
-                    
-                    if (scrollPos > elementTop - 600 && scrollPos < elementTop + elementHeight - 200) {
-                        $(this).css('opacity', '1');
-                        $(this).css('transform', 'translateY(0)');
-                    }
-                });
             });
             
-            // تهيئة تأثيرات العناصر
-            $('.fade-in').css('opacity', '0');
-            $('.fade-in').css('transform', 'translateY(20px)');
-            setTimeout(function() {
-                $(window).scroll();
-            }, 100);
+            // تحميل حالات الفيديوهات (بشكل ديناميكي لجميع الفيديوهات الموجودة)
+            $('.video-check').each(function() {
+                const key = $(this).data('video-key');
+                const isChecked = localStorage.getItem(`video_${key}`) === 'true';
+                if (isChecked) {
+                    $(this).prop('checked', true);
+                    $(`#video-label-${key}`).addClass('video-completed');
+                }
+            });
+        }
+        
+        // تحديث شريط التقدم
+        function updateProgressBar() {
+            const totalItems = $('.content-check').length + $('.video-check').length;
+            const completedItems = $('.content-check:checked').length + $('.video-check:checked').length;
+            const remainingItems = totalItems - completedItems;
             
-            // تحسين تجربة الأجهزة المحمولة
-            if ($(window).width() < 768) {
-                $('.week-header').click(function() {
-                    $(this).find('i.fa-chevron-down').toggleClass('fa-rotate-180');
-                });
+            let percentage = 0;
+            if (totalItems > 0) {
+                percentage = Math.round((completedItems / totalItems) * 100);
             }
             
-            // تحديث تلقائي للتقدم كل ثانية (للتأكد من المزامنة)
-            setInterval(updateProgressBar, 1000);
+            // تحديث شريط التقدم
+            $('#progressFill').css('width', percentage + '%');
+            $('#progressPercentage').text(percentage + '%');
             
-            // تحسين الأداء على الهواتف
-            if ('ontouchstart' in window) {
-                // تحسين تفاعلية العناصر للشاشات التي تعمل باللمس
-                $('.video-number').css('cursor', 'pointer');
-                $('.member-card').css('cursor', 'pointer');
+            // تحديث الأرقام
+            $('#completedCount').text(completedItems);
+            $('#remainingCount').text(remainingItems);
+            $('#totalCount').text(totalItems);
+            
+            // تحديث النص التوضيحي
+            let progressText = '';
+            let emoji = '';
+            
+            if (percentage === 0) {
+                progressText = 'لم تبدأ بعد، ابدأ بالتعلم الآن!';
+                emoji = '💪';
+            } else if (percentage < 20) {
+                progressText = 'بداية جيدة! استمر في التعلم.';
+                emoji = '🚀';
+            } else if (percentage < 40) {
+                progressText = 'تقدم ممتاز! أنت على الطريق الصحيح.';
+                emoji = '🌟';
+            } else if (percentage < 60) {
+                progressText = 'أداء رائع! أنت تقترب من منتصف الطريق.';
+                emoji = '🔥';
+            } else if (percentage < 80) {
+                progressText = 'مذهل! بضع خطوات فقط للانتهاء.';
+                emoji = '⚡';
+            } else if (percentage < 100) {
+                progressText = 'رائع! أنت على وشك الانتهاء.';
+                emoji = '🎯';
+            } else {
+                progressText = 'تهانينا! لقد أكملت جميع العناصر!';
+                emoji = '🏆';
             }
+            
+            $('#progressText').html(`${progressText} ${emoji}`);
+            
+            // حفظ النسبة المئوية الكلية
+            localStorage.setItem('overallProgress', percentage);
+        }
+        
+        // إضافة تأثير عند التمرير
+        $(window).scroll(function() {
+            const scrollPos = $(window).scrollTop();
+            $('.fade-in').each(function() {
+                const elementTop = $(this).offset().top;
+                const elementHeight = $(this).height();
+                
+                if (scrollPos > elementTop - 600 && scrollPos < elementTop + elementHeight - 200) {
+                    $(this).css('opacity', '1');
+                    $(this).css('transform', 'translateY(0)');
+                }
+            });
         });
+        
+        // تهيئة تأثيرات العناصر
+        $('.fade-in').css('opacity', '0');
+        $('.fade-in').css('transform', 'translateY(20px)');
+        setTimeout(function() {
+            $(window).scroll();
+        }, 100);
+        
+        // تحسين تجربة الأجهزة المحمولة
+        if ($(window).width() < 768) {
+            $('.week-header').click(function() {
+                $(this).find('i.fa-chevron-down').toggleClass('fa-rotate-180');
+            });
+        }
+        
+        // تحديث تلقائي للتقدم كل ثانية (للتأكد من المزامنة)
+        setInterval(updateProgressBar, 1000);
+        
+        // تحسين الأداء على الهواتف
+        if ('ontouchstart' in window) {
+            // تحسين تفاعلية العناصر للشاشات التي تعمل باللمس
+            $('.video-number').css('cursor', 'pointer');
+            $('.member-card').css('cursor', 'pointer');
+        }
     </script>
 </body>
 </html>
-
